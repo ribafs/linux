@@ -1,0 +1,65 @@
+Installing OpenVPN on CentOS 7
+Published on: Wed, Oct 1, 2014 at 5:44 pm EST
+CentOS Linux Guides Networking Ubuntu
+
+In today's society, security and privacy is a problem when you are at public areas like airports, coffee shops, hotels, or any location that offers free public WiFi. Outsiders can monitor internet traffic between your computer and the web. OpenVPN is an open source application that implements a virtual private network, which will create a secure connection between you and your remote destination (website or server). This tutorial will show you how to install and setup OpenVPN on CentOS 7.
+Step 1: Install net-tools
+
+CentOS 7 does not include ifconfig which is located in the net-tools package. OpenVPN requires ifconfig in order to properly operate. Run the following commands on your server to install net-tools:
+
+yum update
+yum install net-tools
+
+Step 2: Download OpenVPN
+
+You will now need to download the RPM for OpenVPN. Run the following command:
+
+cd /tmp
+wget http://swupdate.openvpn.org/as/openvpn-as-2.0.10-CentOS7.x86_64.rpm
+
+Step 3: Install and Setup OpenVPN
+
+Please note, this RPM is for CentOS 7. Installing it on anything other CentOS 7 may result in errors. Run the following command to install OpenVPN:
+
+rpm -Uvh openvpn-as-2.0.10-CentOS7.x86_64.rpm 
+
+If your installation was successful, you should see the following (Replace 0.0.0.0 accordingly):
+
+The Access Server has been successfully installed in /usr/local/openvpn_as
+Configuration log file has been written to /usr/local/openvpn_as/init.log
+Please enter "passwd openvpn" to set the initial
+administrative password, then login as "openvpn" to continue
+configuration here: https://0.0.0.0:943/admin
+To reconfigure manually, use the /usr/local/openvpn_as/bin/ovpn-init tool.
+
+
+Access Server web UIs are available here:
+Admin  UI: https://0.0.0.0:943/admin
+Client UI: https://0.0.0.0:943/
+
+Once you see this message, you want to run passwd openvpn to change the password to the account. Following that, open your browser and navigate to https://0.0.0.0:943/. You will be presented with a login screen. On the login screen, continue logging in with the username being openvpn the password that you used with the passwd command. Once you are logged in, you will see 6 links. Click on the last link. This will allow you to download your VPN profile which allows you setup your VPN client.
+
+Next, click on the admin button and login with the same username and password that you have entered previously. Once you are in, and you have read and agreed with the terms, you be on a page that shows your server status. If the status is off, press the Start the Server button to turn the VPN server on. If no errors occurred, you will see Server Started with the status being On. Now you are ready to go on to the next step.
+Step 4: Using OpenVPN on Your Computer
+
+Depending on your operating system or device, your setup will be different. From here forward, this tutorial provides setups for users of Ubuntu 14.04. If you are using any other OS or device, please follow one of the links located on https://0.0.0.0:943, once you have logged in.
+
+On your computer open up terminal and run:
+
+ sudo apt-get install openvpn
+
+This command will install the VPN client software. The VPN client software establishes a connection between your computer and the VPN. Once it has finished downloading, you will want to check to make sure that it is installed by running:
+
+openvpn –version
+
+Upon success, you will see a similar output printed on your screen:
+
+OpenVPN 2.3.2 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [EPOLL] [PKCS11] [eurephia] [MH] [IPv6] built on Feb  4 2014
+
+You have installed OpenVPN on your computer. Next, run the following command:
+
+sudo openvpn --config /path/to/client.ovpn
+
+This will prompt you to enter the username and password of your VPN. After logging in, your computer will be connected to your VPN. To verify your VPN connection, visit your favorite search engine and type "IP address". You will be presented with a list of websites that show your current IP address (some search engines will even include your IP in the search results). Confirm your current IP address. If your IP address displayed is different from the IP address assigned to you by your ISP, then you have successfully connected to your VPN server.
+
+https://www.vultr.com/docs/installing-openvpn-on-centos-7

@@ -1,0 +1,27 @@
+clear;
+echo "Configurar php (display_errors = On)
+date.timezone = America/Fortaleza
+Aperte ENTER para abrir o php.ini
+Comentar xdebug
+";
+sudo nano /etc/php/7.2/apache2/php.ini
+
+nano /etc/php/7.2/cli/conf.d/20-xdebug.ini;
+
+echo "Configurar .htaccess no Apache 2.4 trocando None por All
+e /var/www por /backup/www.
+Aperte ENTER para configurar.
+No apache2.conf:
+
+ServerName localhost
+<Directory />
+    Options Indexes FollowSymLinks Includes ExecCGI
+    AllowOverride All
+    Order deny,allow
+    Allow from all
+</Directory>
+
+sudo nano /etc/apache2/apache2.conf;
+nano /etc/apache2/sites-available/000-default.conf;
+
+sudo service apache2 restart;

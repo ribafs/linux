@@ -1,0 +1,8 @@
+sha512sum /dev/sr0 /tmp/file.iso
+
+md5sum file.iso
+
+sudo apt-get install genisoimage
+
+isoinfo dev=/dev/sr0 -d
+

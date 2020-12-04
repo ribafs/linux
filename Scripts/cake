@@ -1,0 +1,4 @@
+#sudo nano /usr/local/bin/cake
+composer create-project --prefer-dist cakephp/app $1
+#sudo chmod +x /usr/local/bin/cake
+

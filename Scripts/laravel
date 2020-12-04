@@ -1,0 +1,4 @@
+#sudo nano /usr/local/bin/laravel
+composer create-project --prefer-dist laravel/laravel $1
+#sudo chmod +x /usr/local/bin/laravel
+

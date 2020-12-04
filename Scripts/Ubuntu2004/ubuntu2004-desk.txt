@@ -1,0 +1,12 @@
+wget "https://go.microsoft.com/fwlink/?LinkID=760868" -O vscode.deb
+sudo dpkg -i vscode.deb
+sudo apt install -y -f
+sudo apt install -y libreoffice-l10n-pt-br vokoscreen searchmonkey;
+
+sudo apt install -y rar unrar zip unzip p7zip-full ubuntu-restricted-extras kolourpaint;
+sudo apt install -y fonts-crosextra-carlito fonts-crosextra-caladea;
+
+# Falta
+# shutter
+# alarm-clock
+

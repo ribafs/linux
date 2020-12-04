@@ -1,0 +1,84 @@
+Ao usar o fdisk num pendrive e aparecer
+Descompasso no tamanho da PMBR GPT (1508219 != 15633407) será corrigido por gravação (w).
+
+Se o pendrive estiver em
+/dev/sdf
+
+E o fdisk não conseguir corrigir use
+
+sudo parted -l /dev/sdf
+
+Então aparece algo como
+
+Error: The backup GPT table is not at the end of the disk, as it should be.
+Fix, by moving the backup to the end (and removing the old backup)?
+Fix/Ignore? f                                                             
+Warning: Not all of the space available to /dev/sdf appears to be used, you can fix the
+GPT to use all of the space (an extra 14125158 blocks) or continue with the current
+setting? 
+Fix/Ignore?
+
+Digite
+Fix
+
+E tecle Enter
+
+Execute novamente
+
+sudo parted -l /dev/sdf
+
+Veja que não mais aparece o erro
+
+Removendo todas as partições existentes com fdisk
+
+sudo fdisk /dev/sdf
+
+Não mais aparece o erro
+
+p - ver as partições
+
+d - deletar uma partição
+
+Apenas tecle Enter para que remova a última partição
+
+d - novamente
+E enter
+
+Até remover todas
+
+Criar uma nova partição ocupando todo o pendrive
+
+n - criar uma nova partição
+
+p - primária
+
+Enter para aceitar os default até terminar
+
+w - gravar as alterações e sair
+
+Agora podemos formatar  a partição /dev/sdf1
+
+
+umount /dev/sdb1
+
+Escolha a opção, a padrão é vfat
+
+mkfs.vfat /dev/sdf1
+
+mkfs.ntfs /dev/sdf1
+
+mkfs.ext4 /dev/sdf1
+
+
+Mudar o label
+
+sudo e2label /dev/sdf1 RibaFS
+
+Deixar com leitura e escrita
+
+chown -R ribafs:ribafs /media/ribafs/RibaFS
+
+Para que o pendrive tenha permissão de escrita:
+
+sudo chown -R ribafs:ribafs /media/ribafs
+

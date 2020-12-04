@@ -1,0 +1,53 @@
+Unix Toolbox
+
+Esse documento é uma coleção de comandos Unix/Linux/BSD e de tarefas que são uteis para trabalho em TI ou usuários avançados. Esse é um guia prático com explicações concisas, embora o leitor deve saber o que está fazendo.
+
+Veja as seções
+    System
+    Processes
+    File System
+    Network
+    SSH SCP
+    VPN with SSH
+    RSYNC
+    SUDO
+    Encrypt Files
+    Encrypt Partitions
+    SSL Certificates
+    CVS
+    SVN
+    Useful Commands
+    Install Software
+    Convert Media
+    Printing
+    Databases
+    Disk Quota
+    Shells
+    Scripting
+    Programming
+    Online Help
+
+Original em inglês - o mais atualizado
+http://cb.vu/unixtoolbox.xhtml
+
+PDF
+http://cb.vu/unixtoolbox.book.pdf
+
+Em português de 2015
+https://github.com/tocadotux/unix-toolbox
+
+Em pt-br de 2012
+https://tocadotux.github.io/unix-toolbox/
+
+Ele já deu origem a similares
+http://bhami.com/rosetta.html
+
+para BSD
+https://www.bokus.com/bok/9780470376034/bsd-unix-toolbox-1000-commands-for-freebsd-openbsd-netbsd/
+
+https://books.google.com.br/books?id=yWGodvwXsS4C&pg=PA1&lpg=PA1&dq=unix+toolbox&source=bl&ots=FWvTCt5PCm&sig=1LHewXbjuCi_UnC3DATBg0Ln_n8&hl=pt-BR&sa=X&ved=0ahUKEwi40p_Gw5baAhUCPZAKHeeIBxYQ6AEIfzAL#v=onepage&q=unix%20toolbox&f=false
+
+Para MAC
+https://books.google.com.br/books?id=3Ak_p9KFF5kC&pg=PR19&lpg=PR19&dq=unix+toolbox&source=bl&ots=Mm0yJJWqn6&sig=VXcb3T1gP6KhhS5oJ9ASu7C5rqc&hl=pt-BR&sa=X&ved=0ahUKEwi40p_Gw5baAhUCPZAKHeeIBxYQ6AEIhQEwDA#v=onepage&q=unix%20toolbox&f=false
+
+

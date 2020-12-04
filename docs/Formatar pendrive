@@ -1,0 +1,44 @@
+Formatar pendrive
+
+su
+
+fdisk -l
+
+Se preciso remover todas as partições coom, exemplo
+
+fdisk /dev/sdb
+
+d
+1
+d
+2
+n
+p
+Enter
+Enter
+w
+
+sudo umount /dev/sdb1
+
+sudo mkfs.vfat /dev/sdb1
+
+sudo mkfs.ntfs /dev/sdb1
+
+sudo mkfs.ext4 /dev/sdb1
+
+
+Mudar o label
+
+sudo e2label /dev/sdb1 RibaFS
+
+sudo tune2fs -L RibaFS /dev/sdf1
+
+ntfslabel device label
+
+sudo umount /dev/sdf1; sudo ntfsfix /dev/sdf
+
+Deixar com leitura e escrita
+
+sudo chown -R ribafs:ribafs /media/ribafs/RibaFS
+
+Reiniciar computador após isso para que o pendrive tenha permissão de escrita.

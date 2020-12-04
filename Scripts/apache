@@ -1,0 +1,10 @@
+Testar a sintaxe
+sudo apachectl configtest
+
+Ver módulos instalados e habilitados
+sudo apachectl -M
+
+Para desabilitar um:
+sudo a2dismod nomemodulo
+sudo service apache2 reload
+

@@ -1,0 +1,1 @@
+su -c "nano /etc/fstab/dev/sdb /media/ribafs auto user"

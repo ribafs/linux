@@ -1,0 +1,33 @@
+Videos
+
+1. Open Shot
+
+We start our list with OpenShot,is a feature rich, multiplatform video editor that can be used on Linux, Windows and Macs. OpenShot is written in Python and it supports many different audio and video formats and also includes drag-n-drop feature.
+
+To get a better understanding of the features that OpenShot has, here is a more detailed list:
+
+    Supports large variety of video, audio and image formats based on ffmpeg.
+    Easy Gnome integration and support for drag and drop.
+    Video resizing, scaling, trimming and cutting.
+    Video transitions
+    Include watermarks
+    3D animated titles
+    Digital zooming
+    Video effects
+    Speed changes
+
+sudo add-apt-repository ppa:openshot.developers/ppa
+sudo apt-get update
+sudo apt-get install openshot-qt
+
+Installation of Pitivi
+
+Pitivi is available for download via the Ubuntu software manager or via:
+
+sudo apt-get install pitivi
+
+Blender
+
+sudo apt-get install blender
+
+

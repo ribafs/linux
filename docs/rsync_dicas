@@ -1,0 +1,19 @@
+rsync -av -e 'ssh -p 65522' --progress --delete-after /backup/transp/rsync/ ribafs@178.62.122.149:/home/ribafs/rsync/
+
+Com porta diferente da 22
+rsync -arvz -e 'ssh -p <port-number>' --progress --delete user@remote-server:/path/to/remote/folder /path/to/local/folder
+
+Do desktop para o server
+
+rsync -avz -e 'ssh -p 65522' --progress /backup/transp/rsync/ ribafs@178.62.122.149:/home/ribafs/rsync/
+
+Passar a senha pelo cron
+
+ssh-keygen
+
+ssh-copy-id -i ~/.ssh/id_rsa.pub ribafs192.168.200.10 -p 65522
+
+sudo crontab -e
+
+30 12 * * * rsync -aq -e 'ssh -p 65522' /backup/transp/rsync/ ribafs@178.62.122.149:/home/ribafs/rsync/
+

@@ -1,0 +1,85 @@
+Mint 20
+
+Setar uma senha para o root no Ubuntu/Mint
+sudo su
+passwd root
+
+Prompt
+
+nano .bashrc
+PS1="\[\e[33mNb-\]\W \[\e[37m\]$ "
+
+Ativar uso das teclas de função sem a Fn
+Fn+Esc
+
+Sudo sem senha
+sudo bash -c 'echo "$(logname) ALL=(ALL:ALL) NOPASSWD: ALL" | (EDITOR="tee -a" visudo)'
+
+Sincronizar o fuso horário entre windows e linux em dualboot 
+timedatectl set-local-rtc 1 --adjust-system-clock
+
+alarme-clock
+https://launchpad.net/ubuntu/bionic/+package/alarm-clock-applet
+
+Searchmonkey
+https://community.linuxmint.com/software/view/searchmonkey
+
+Remover mensagens de falha do Ubuntu
+sudo apt remove --purge apport apport-gtk apport-symptoms
+
+== Instalar nodejs 14
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+Desabilitar o Touchpad em nootbooks com eclado externo pelo menu
+
+Alternativa para o Alarme
+Extensão Timer para Firefox - http://eccorem.com/apps/timer.html
+
+Timeshift no Mint
+Remover o timeshift em caso de problema
+sudo apt remove --purge timeshift
+
+Atalhos no Nemo
+- Remover alguns atalhos do Nemo
+- Adicionar os meus
+
+== Configurar relógio para mostrar data
+
+== Configurar teclas de atalho customizadas
+- firefox - f
+- xed/gedit - n
+- libreoffice -writer - o
+- Bandeira+E - acessar nemo (como no windows)
+- kolourpaint - k
+- shutter - capturar tela - s  ou Screenshot - gnome-screenshot --interactive
+Desligar - Ctrl+Alt+End (default no mint)
+gnome-session-quit --power-off --force
+gnome-terminal --working-directory=/backup/www/laravel - Ctrl+Alt+T
+
+
+==Configurar LibreOffice Writer para salvar no /backup/transp e a fonte Time new roman
+Ferramentas - Autocorreção - Opções de autocorreção. Mudar ' e "
+Remover Substituição de -> por → 
+
+==Firefox
+- Sincronizar Firefox
+
+== Instalar LAMP e cia via
+mint_20_desk.sh/debian10_web.sh
+
+== Configurar php e apache
+
+
+No Debian
+Mudar a associação dos pacotes .deb para abrirem por padrão com 
+"Instalação de programa"
+
+== Instalar
+- virtualbox e extensões, vagrant, chrome, alarm, mintstick
+
+Alguns softwares que acompanham mint
+- Formatador de dispositivos de memória USB
+- Instalar imagem em USB
+
+

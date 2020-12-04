@@ -1,0 +1,15 @@
+Impressora tanque de tinta Canon G3110
+
+Ubuntu 20.04, Mint 20 e similares
+
+sudo add-apt-repository ppa:thierry-f/fork-michael-gruz
+sudo apt update
+sudo apt-get install cnijfilter2 scangearmp2
+	Abrir synapitic e pesquisar
+	cnijfilte
+Selecionar mg3100 com um duplo clique e marcar
+Aplicar e apply
+
+Instala impressora e scanner (Scanner de documentos)
+
+https://www.edivaldobrito.com.br/suporte-a-impressoras-e-multifuncionais-da-canon/	

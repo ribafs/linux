@@ -1,0 +1,39 @@
+#!/bin/bash
+# Detectar se usuário digitou o nome do aplicativo (parâmetro)
+if [ -z $1 ]; then
+    clear
+    echo
+    echo
+    echo
+    # Se não tiver digitado mostrar a sintaxe e sair do script
+    # Precisa digitar o ponto no início. Caso não digite não entrará no diretório do aplicativo criado
+    echo "SINTAXE: '. laravel8-jet appNome'"
+    echo
+    echo
+    echo
+    exit 0
+fi
+clear
+echo
+echo
+echo
+echo "==== Instalador do Laravel 8 com autenticação ===="
+echo
+echo
+echo "Entre com: livewire ou inertia"
+read get
+# Se tiver digitado instalar o laravel no diretório digitado
+laravel new $1
+# Mudar para o diretório com o aplicativo criado
+cd $1
+# Então instalar a autenticação
+composer require laravel/jetstream
+php artisan jetstream:install $get
+npm install && npm run dev
+echo 
+echo
+echo
+echo "======================================================="
+# Mostrar a versão do laravel instalado com a mensagem abaixo
+php artisan -V
+echo "Instalado com autenticação usando jetstream e livewire"

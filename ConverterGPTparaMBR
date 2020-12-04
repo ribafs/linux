@@ -1,0 +1,22 @@
+Gparted
+
+    Inicie o GParted no disco.
+    Se alguma partição for montada (conforme indicado por um ícone de cadeado ou chave), desmonte-as.
+    Selecionar dispositivo- > Criar tabela de partições.
+    Clique em Aplicar.
+
+O disco deve agora usar o MBR. Você também pode criar partições no GParted, se quiser; no entanto, o instalador do Windows pode fazer isso automaticamente, se você preferir. 
+
+Se você tiver um disco de instalação do Windows 7, poderá entrar no modo de reparo e usar diskpart para fazer isso.
+
+No DVD do Windows 7, clique em Reparar o seu computador quando vir esta tela: 
+
+Emseguida,selecionePromptdeComandonajanelaReparar:
+
+Depois de inserir o prompt de comando, digite diskpart para entrar no utilitário.
+
+    Digite select disk # substituindo " # " pelo número da unidade que você deseja formatar. Para ver uma lista de discos, digite list disk .
+    Digite clean . Isso exclui todos os volumes da unidade.
+    Digite convert mbr para converter o disco em mbr.
+
+Observação: você pode repetir esse processo e, na etapa 3, substituir o comando convert gpt para voltar à GPT. 

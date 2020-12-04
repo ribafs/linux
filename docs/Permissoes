@@ -1,0 +1,19 @@
+chown -R ribafs:ribafs /backup;
+find /backup -type d -exec chmod 755 {} \;
+find /backup -type f -exec chmod 644 {} \;
+
+
+
+Edit /home/<your_user>/.bashrc (or /root/.bashrc) and write the following line:
+
+umask 0022 
+
+This is the default umask. The sticky bit is disabled and you've got 644 for files and 755 for directories by default.
+
+Altair4, thanks, your solution worked.
+Here are the steps I followed:
+In terminal, run gksu gedit
+Enter text umask 0007
+Save as /etc/profile.d/umask.sh
+reboot
+

@@ -1,0 +1,30 @@
+DNS Gratuito de CloudFlare
+
+https://www.cloudflare.com/
+
+Caso deseje utilizar o DNS da CloudFlare faça o seguinte:
+.
+Abra as configurações de sua conexão com a internet em seu sistema operacional. Vá ao menu que configura IPv4;
+Nele voce verá um campo semelhante a "Servidor DNS"
+Coloque estes numeros:
+.
+Primario: 1.1.1.1
+Secundário: 1.0.0.1
+.
+No Ubuntu por exemplo, existe um campo no menu de redes que pede "servidores DNS", os numeros devem ser colocados ordenadamente, assim:
+1.1.1.1, 1.0.0.1
+
+
+
+O plano grátis inclui
+Esses grandes recursos:
+
+    Proteção DDoS limitada
+    CDN Global
+    Certificado SSL compartilhado
+    Modo "Estou sob ataque" (I'm Under Attack™)
+    Regras para 3 páginas incluídas
+    Regras adicionais disponíveis para compra através do painel
+
+
+https://www.cloudflare.com/a/sign-up

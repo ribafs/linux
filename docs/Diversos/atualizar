@@ -1,0 +1,8 @@
+Para atualizar ubuntu para versão mais recente
+
+apt-get install update-manager-core
+
+Executar a ferramenta de atualização com o comando:
+do-release-upgrade -d
+
+

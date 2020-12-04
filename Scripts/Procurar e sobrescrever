@@ -1,0 +1,3 @@
+Procurar e sobrescrever uma string ou URL recursivamente no diretório atual
+
+find . -type f -exec sed -i -e 's/familia.ribafs.org/ribafs.org\/familia/g' {} \;

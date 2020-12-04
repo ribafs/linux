@@ -1,0 +1,2 @@
+vagrant init generic/debian10
+vagrant up
