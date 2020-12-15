@@ -1,0 +1,55 @@
+O FReeBSD requer uma partição de boot e que seja primária e preferencialmente com MBR
+
+major advantage of GPT is that there are no "primary" or "extended" partitions. You can have practically unlimited partitions (there's a limit, but you'd be hard pressed to reach it and still have a useful system), and the only difference between partitions is their size and unique labels. For another, you can upgrade to the "next generation" of Windows from an existing system on MBR, but all clean installs and OEM installs are on GPT disks since Windows 8.
+
+Para manter vários sistemas em dual boot precisamos usar MBR.
+
+
+Converter MBR para GPT
+
+sudo gdisk /dev/sda
+
+Help
+
+Command (? for help): ?
+b	back up GPT data to a file
+c	change a partition's name
+d	delete a partition
+i	show detailed information on a partition
+l	list known partition types
+n	add a new partition
+o	create a new empty GUID partition table (GPT)
+p	print the partition table
+q	quit without saving changes
+r	recovery and transformation options (experts only)
+s	sort partitions
+t	change a partition's type code
+v	verify disk
+w	write table to disk and exit
+x	extra functionality (experts only)
+?	print this menu
+
+Converter para GPT
+w
+y
+
+sudo gdisk /dev/sda
+GPT fdisk (gdisk) version 1.0.1
+
+Partition table scan:
+  MBR: protective
+  BSD: not present
+  APM: not present
+  GPT: present
+
+Found valid GPT with protective MBR; using GPT.
+
+
+reboot
+
+Na instalação de cada um
+
+- Windows 10 - cria partição tipo EFI 
+- Fedora exige que a partição EFI seja montada em /boot/efi
+- Linux Mint exige uma partição de boot
+

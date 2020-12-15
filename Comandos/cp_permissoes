@@ -1,0 +1,30 @@
+Para copiar arquivos ou diretórios preservando suas permissões, atributos, links, basta utilizar o comando "cp" com a opção "-p":
+
+Exemplo de comando (Copiando Arquivos):
+cp -p /home/User/teste.txt /etc
+
+Exemplo de comando (Copiando Diretórios recursivamente):
+cp -rp /home/User/ /etc
+
+Obs: A opção "-r" copia recursivamente os diretórios, arquivos, links
+
+Mais informações digite: "man cp"
+
+Copiei todo o meu home para
+
+mkdir /backup/ribafs
+cp -rp /home/ribafs /backup/ribafs
+
+E irei criar uma partição /home
+
+Após a instalação irei copiar tudo de ribafs para /home/ribafs
+
+Melhor, vou fazer isso logo agora.
+
+Remover uma partição não usada e criar uma para /home
+
+Depois de criar adicionar ao fstab
+
+E copiar tudo para ela.
+
+

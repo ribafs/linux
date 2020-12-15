@@ -1,0 +1,5 @@
+Listar maiores arquivos de diretório do duretório atual em ordem crescente
+
+du --human-readable * | sort --human-numeric-sort
+
+sudo du -h | egrep -v "\./.+/" | sort -h
