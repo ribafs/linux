@@ -1,13 +1,22 @@
 Mint 20
 
+Instalar
+- Kazam
+- Openshot
+- Chrome
+
 Setar uma senha para o root no Ubuntu/Mint
 sudo su
 passwd root
 
+Driver impressora Canon G3110
+https://canonpixmadriverdownload.com/canon-pixma-g3110-drivers-download/
+
 Prompt
 
 nano .bashrc
-PS1="\[\e[33mNb-\]\W \[\e[37m\]$ "
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\W\[\033[00m\] '
+#PS1="\[\e[33mNb-\]\W \[\e[37m\]$ "
 
 Ativar uso das teclas de função sem a Fn
 Fn+Esc
@@ -22,21 +31,19 @@ alarme-clock
 https://launchpad.net/ubuntu/bionic/+package/alarm-clock-applet
 
 Searchmonkey
+https://sourceforge.net/projects/searchmonkey/files/latest/download
 https://community.linuxmint.com/software/view/searchmonkey
 
 Remover mensagens de falha do Ubuntu
 sudo apt remove --purge apport apport-gtk apport-symptoms
 
-== Instalar nodejs 14
+== Instalar nodejs 14 no Mint
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 Desabilitar o Touchpad em nootbooks com eclado externo pelo menu
 
-Alternativa para o Alarme
-Extensão Timer para Firefox - http://eccorem.com/apps/timer.html
-
-Timeshift no Mint
+Timeshift no Mint e Debian
 Remover o timeshift em caso de problema
 sudo apt remove --purge timeshift
 
@@ -53,7 +60,7 @@ Atalhos no Nemo
 - Bandeira+E - acessar nemo (como no windows)
 - kolourpaint - k
 - shutter - capturar tela - s  ou Screenshot - gnome-screenshot --interactive
-Desligar - Ctrl+Alt+End (default no mint)
+Desligar - Ctrl+Alt+End (default no mint20 e debian10)
 gnome-session-quit --power-off --force
 gnome-terminal --working-directory=/backup/www/laravel - Ctrl+Alt+T
 
@@ -81,5 +88,10 @@ Mudar a associação dos pacotes .deb para abrirem por padrão com
 Alguns softwares que acompanham mint
 - Formatador de dispositivos de memória USB
 - Instalar imagem em USB
+
+Chrome
+
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
 
 

@@ -50,7 +50,7 @@ https://linuxconfig.org/how-to-reset-root-mysql-mariadb-password-on-ubuntu-20-04
 == Criar senha do postgres e liberar acesso no pg_hba
 sudo su
 su - postgres
-psql
+psql  (11.9 - Debian 10)
 alter role postgres password 'postgres';
 \q
 exit
@@ -60,12 +60,16 @@ Mudar
 local   all             postgres                                peer
 
 Para
-local   all             postgres                                md5
+local   all             postgres                                trust
 
 sudo service postgresql restart
 
-== Instalar nodejs 12
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+== Instalar nodejs 14
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install -y nodejs
 
 
+Debian 10
+
+curl -sL https://deb.nodesource.com/setup_14.x | bash -
+apt-get install -y nodejs

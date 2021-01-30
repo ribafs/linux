@@ -1,9 +1,0 @@
-Cancelar pedido de autenticação de chaveiro
-
-rm ~/.local/share/keyrings/*
-
-Abrir o Chrome com gmail (ex) e quando eprguntado
-Continuar
-Continuar
-
-pronto

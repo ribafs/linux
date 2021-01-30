@@ -1,0 +1,16 @@
+
+Checar arquitetura
+
+sudo dpkg --print-architecture
+
+20 para 20.1
+
+sudo sed -i 's/ulyana/ulyssa/g' /etc/apt/sources.list.d/official-package-repositories.list
+
+sudo apt update
+
+sudo apt dist-upgrade
+
+sudo reboot
+
+https://easylinuxtipsproject.blogspot.com/p/upgrade-mint.html#ID6

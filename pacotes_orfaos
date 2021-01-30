@@ -1,5 +1,0 @@
-sudo aptitude update && sudo aptitude install gtkorphan
-
-Pelo modo gráfico
-Remover pacotes órfãos
-
