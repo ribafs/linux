@@ -1,0 +1,19 @@
+Filemanagers Linux
+
+nautilus
+krusader
+pcman
+xfe
+nemo
+thunar
+caja
+deepin
+polo
+pantheon
+4pane
+jfileprocessor
+qtfm
+fman
+lirifiles
+
+https://www.tecmint.com/top-best-lightweight-linux-file-managers/
