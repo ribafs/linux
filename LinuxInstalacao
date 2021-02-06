@@ -1,0 +1,15 @@
+Instalação do Linux
+
+Gravação da ISO com Rufus
+
+Usar GPT ao invés de MBR quem tiver a BIOS ativada como UEFI
+
+Na instalação do Linux deixar que ele crie as partições automaticamente é preferível se você não sabe como fazer.
+
+Caso queira criar as partições segue uma sugestão:
+
+- swap 1GB
+- UEFI 1GB
+- / - 100GB 
+- /backup - restante do disco
+
