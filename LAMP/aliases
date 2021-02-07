@@ -1,0 +1,28 @@
+Edite o ~/.bashrc
+
+nano ~/.bashrc
+
+Adicione estas linhas (antes faça ajustes para sua realidade, removendo, alterando e/ou adicionando outras)
+
+alias cw='clear;cd /home/ribafs/www;ls'
+alias cpu='clear;cd /home/ribafs/backup/github/public/ls'
+alias cpr='clear;cd /home/ribafs/backup/github/private;ls'
+alias cdocs='clear;cd /home/ribafs/backup/github/docs_source;ls'
+alias af='php artisan migrate:fresh'
+alias am='php artisan migrate'
+alias as='php artisan serve'
+alias ams='composer du;php artisan migrate --seed'
+alias asd='composer du;php artisan db:seed'
+alias at='php artisan tinker'
+alias auth7='composer require laravel/ui --dev;php artisan ui bootstrap --auth;npm install && npm run dev;npm audit fix'
+alias clearall='php artisan view:clear;php artisan cache:clear;php artisan route:cache;php artisan route:clear;php artisan optimize;php artisan config:cache;composer dumpautoload'
+
+Salve e saia com Ctrl+O e Ctrl+X
+
+Execute
+
+source .bashrc
+
+Para que surta efeito sem precisar fechar e abrir o terminal.
+
+

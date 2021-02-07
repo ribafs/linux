@@ -1,0 +1,60 @@
+Ubuntu 20.10
+
+== Setar uma senha para o root
+
+sudo su
+passwd root
+
+== Customizar o Prompt de comandos
+
+nano .bashrc
+
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\W\[\033[00m\] '
+
+== Ativar uso das teclas de função sem a Fn em notebooks
+
+Fn+Esc
+	
+== Remover mensagens de falha do Ubuntu (não recomendado)
+
+sudo apt remove --purge apport apport-gtk apport-symptoms
+
+== Desabilitar o Touchpad em nootbooks com eclado externo pelo menu
+
+== Atalhos no Nemo/Nautilus
+- Remover alguns atalhos
+- Adicionar os meus (abrir a pasta e Ctrl+D)
+
+== Configurar relógio para mostrar também a data
+
+== Configurar teclas de atalho customizadas
+Menu - Teclado - Atalhos - Atalhos personalizados - Adicionar atalho personalizado
+
+- firefox - f
+- xed/gedit - n
+- libreoffice -writer - o
+- Bandeira+E - acessar nemo (como no windows)
+- kolourpaint - k
+- Screenshot - gnome-screenshot --interactive
+- Desligar - gnome-session-quit --power-off --force
+- Terminal - gnome-terminal --working-directory=/home/ribafs/www - Ctrl+Alt+T
+
+==Configurar LibreOffice Writer para salvar no /backup/transp e a fonte Time new roman
+
+Ferramentas - Autocorreção - Opções de autocorreção. Mudar ' e "
+Remover Substituição de -> por → 
+Tornar Time new roman a fonte default para o Writer
+
+==Firefox
+- Sincronizar Firefox
+
+== Instalar LAMP e cia via
+ubuntu-2010.sh
+
+== Configurar php e apache
+
+== Desabilitar o serviço do postgres, caso não vá usar agora
+
+service postgresql stop
+sudo systemctl disable postgresql
+
