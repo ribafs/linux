@@ -1,0 +1,1 @@
+scp -r $1 ribafs@web.sourceforge.net:/home/project-web/mint-prog/htdocs/$2

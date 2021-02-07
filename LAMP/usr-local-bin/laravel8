@@ -1,0 +1,2 @@
+laravel new $1 --jet --stack=livewire
+
