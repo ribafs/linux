@@ -42,8 +42,8 @@ a2enmod rewrite;
 systemctl restart apache2;
 
 # Instalar outros softwares
-apt install -y ttf-mscorefonts-installer fonts-crosextra-carlito fonts-crosextra-caladea kazam openshot peek;
-apt install -y rar unrar zip unzip p7zip-full ubuntu-restricted-extras kolourpaint searchmonkey net-tools samba;
+apt install -y ttf-mscorefonts-installer fonts-crosextra-carlito fonts-crosextra-caladea kazam openshot peek synaptic;
+apt install -y rar unrar zip unzip p7zip-full ubuntu-restricted-extras kolourpaint searchmonkey net-tools samba whois;
 
 # Ajustar relógio se em dual-boot
 #timedatectl set-local-rtc 1 --adjust-system-clock;
