@@ -1,0 +1,15 @@
+nano .bashrc
+
+# Meus aliases
+alias cw='clear;cd /backup/www;ls'
+alias gp='clear;cd /backup/github/pessoais;gs "Update"'
+alias gu='clear;cd /backup/github/public;ls'
+alias aprel='sudo service apache2 reload'
+alias apres='sudo service apache2 restart'
+alias aptes='apachectl configtest'
+alias mrel='sudo service mysql reload'
+alias mres='sudo service mysql restart'
+# /Meus
+
+source .bashrc
+
