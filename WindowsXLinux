@@ -1,0 +1,42 @@
+Comparação entre Windows e Linux
+
+Especialmente no que tange à programação para PHP
+
+A comparação foi usando Windows 10 e Linux Mint 20.1
+
+Para quem nunca usou os dois ambientes não tem como comparar, apenas acredita ou não.
+
+Me parece que quem programa em PHP, cuja grande maioria usa Windows, deveria pelo menos experimentar um Linux, pois a maioria dos servidores web usa Linux, sem contar que aprender um novo sistema operacional valoriza o profissional
+
+Comparação
+
+- Windows é um sistema operacional pago enquanto Linux é gratuito e de código fonte aberto
+- Operações com arquivos são sensivelemnte mais lentas em Windows
+- As operações com internet são um pouco mais rápidas no Linux
+- As atualizações do windows algumas vezes ocupam o computador com exclusividade por muito tempo, nos impedindo de usá-lo. E não devemos interromper a atualização desligando ou reiniciando o computador, sob pena de correr o risco de nem mais iniciar
+- A usabilidade em geral no Linux Mint é superior a do Windows. Diversos aspectos foram pensados pelos criadores para facilitar a vida do usuário. Um dos mais importantes é o Mint vir com um menu como vinha no Windows 7. Isso ajuda a encontrar todos os programas gráficos instalador sem precisar lembrar seu nome.
+- O Windows 10 está vindo com o WSL, que se propõe a oferecer uma distribuição linux no prompt. Mas isso ainda está longe de ser algo usável. Atualmente é mais produtivo usar um pacote como o Xampp.
+- O Windows 10 é gordo e pesado exigindo um computador mais caro e robusto do que o necessário para usar o Linux Mint 20.1. E isso é por que o Linux Mint já vem com muita coisa tornando o seu uso mais produtivo. Existem diversas distribuições Linux ainda mais leves que o Mint.
+- Para se desinstalar um programa no Linux Mint apenas abrimos o menu, mostramos o nome do programa e clicamos nele com o botão direito - Desinstalar e confirmamos.
+- A maioria dos softwares que instalamos no Linux vem dos repositórios oficiais (que ajuda na segurança), que torna a vida do usuário bem mais prática tanto no terminal quanto no gerenciador de aplicativos. Isso é algo que não deve interessar para a MS, tendo em vista que ela nunca adotou algo do tipo.
+- Como o Linux tem código fonte aberto já temos centenas de distribuições (http://distrowatch.org/ e https://en.wikipedia.org/wiki/List_of_Linux_distributions), com usos específicos para diversas necessidades, como educação, segurança, servidores, leves, etc. Qual o sistema opercaional é oriundo do Windows? Não pode, pois seu código é fechado. Ele é estéril.
+- Um ponto forte do Linux é a liberdade de customizações.
+- O desenvolvimento em comunidade, o fato de ser gratuito e de código fonte aberto possibilitam a correção de bubs e de falhas de segurança com mais agildiade.
+- Como o Windows tem quase todos os recursos no modo gráfico torna o uso do sistema muito fácil. O Linux até já conta com distribuições que focam no modo gráfico, como o Mint, mas continua endo muitos recursos importantes no terminal o que torna o usuário que o domina alguém com um perfil geralmente superior ao usuário comum do Windows. Estes e mais outros motivos criam uma comunidade de usuários mais ativa e inclusive maior que a comunidade de usuários do Windows.
+- Como em termos de sistema para desktop o Windows não tem concorrente, a MS não se preocupa em melhorar alguns aspectos do sistema. Melhora apenas o que interessa para ele.
+- O Linux evoluiu tanto que atualmente chega a detectar e instalar automaticamente drivers do hardware ainda mais que o Windows.
+- Somente o fato de ser o sistema mais usado já seria suficiente para atrair sobre si a atenção dos cracker, mas não ś somente isso que o torna o sistema menos seguro.
+- Quando se abre o Windows explorer (gerenciador de arquivos) muitas vezes ele demora muito para ficar disponível para uso, pois fica scanneando o sistema de arquivos. Para agilizar eu fecho e abro novamente.
+- Tanto para ligar quanto para desligar o Linux Mint 20.1 é mais rápido que o Windows 10. Deve ser por conta da gordura em excesso. É como se a MS fosse parceira dos fabricantes de hardware e forçasse um upgrade.
+- A instalação do Linux é de longe mais simples e rápida que a do Windows.
+- Algo marcante no Linux é a estabilidade e robustez. Praticamente não se vê um linux travado.
+
+Seria ingenuidade afirmar que o Linux é o sistema operacional ideal para todos. Ele até já pode ser usado por todos, atendendo muitas das necessidades, mas algumas necessidades o Linux ainda não atende como o Windows: alguns jogos pesados, programas de edição de imagens como o Photoshop, CorelDraw, AutoCAD, alguns de edição de vídeo. Estas áreas ainda prendem usuários no Linux. O Linux já evoluiu muito nestas áreas mas ainda falta evoluir para conseguir atender a todos os usuários. O que acontece é que os fabricantes destes programas ainda não se votlaram para o Linux, que ainda tem poucos usuários em relação aos do Windows.
+
+Me parece que todos os 3 principais sistemas para desktop, Windows, Mac e Linux caminham para um sistema comum, com recursos dos 3. Ainda temos um novo sistema surgindo, que é o ChromeOS. Algo que mostra esta tendência é a implantação do WSL, que tenta atrair usuários do Linux. 
+
+Algumas pequenas diferenças (Testar no Windows 10):
+
+- Selecionar um arquivo no gerenciador de arquivos e teclar F2 para renomeá-lo (veja os qual sistema pensa mais no usuário, faciltiando sua vida):
+    Linux Mint 20.1
+    Windows 10 

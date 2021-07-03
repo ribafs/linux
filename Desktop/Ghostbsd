@@ -1,0 +1,63 @@
+Instalação do Ghostbsd
+
+Download - http://ghostbsd.org/download
+
+É bom lembrar que a instalação do ghostbsd precisa ser feita em um disco com o sistema de arquivos UFS ou ZFS e preferentemente com GPT.
+
+Requisitos
+
+Pentium 4 or higher
+1024 MB of RAM
+20 GB of free hard drive space
+Network card
+Sound card
+NVIDIA 3D accelerated video card
+
+Efetuar o download, gravar um DVD ou em pendrive
+Dar boot com o mesmo
+
+Live - Enter
+
+Quando aparecer o login apenas tecle Enter
+
+Efetue um duplo clique em
+GhostBSD Installer
+
+Language - pt_BR
+
+Keyboard - Brazil-br
+
+Continent - America
+
+City - Fortaleza
+
+Installation type and Boot Manager
+
+- Install FreeBSD boot managegr + loader (MBR only)
+
+Partition Editor
+
+ada0
+
+Create
+    GPT: GUID Partition Table
+        +Add
+
+ada0
+    freespace xxxxx
+
+Selecionar freespace e Auto
+
+ada01p1     1 none      BOOT
+ada0p2      xxxx        / UFS+SUJ
+ada0p3      xxx         none  SWAP
+
+Administrator Password
+
+User Setup
+
+Aguardar a instalação
+
+Reiniciar
+
+

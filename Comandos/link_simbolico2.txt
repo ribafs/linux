@@ -1,0 +1,6 @@
+ln -s origem destino
+
+Criar um link simbólico da pasta /var/www/html/laravel/publi em /var/www/html
+
+ln -s /var/www/html/laravel/public /var/www/html
+

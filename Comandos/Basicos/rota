@@ -1,0 +1,57 @@
+sudo route add default gw 192.168.1.1
+
+route -n
+
+Adicionar ao /etc/network/interfaces
+
+up route add -net 192.168.0.0 netmask 255.255.255.0 gw 192.168.0.1 vboxnet0
+
+
+Como adicionar rotas estáticas persistentes no ubuntu
+
+    I found a solution. Its easier to make a script that adds those routes at system bootup than to try and add them to the rc.local file to make them get executed automatically. the procedure is as follows:
+    1. create a script file in the /etc/init.d/ folder.
+    2. add your route definitions to this file and change it to an executable file(chmod +x /path/to/file).
+    3. run the update-rc.d <filename> defaults command to make the script executable at boot time.
+    4. reboot the system and check whether the system adds the routes at startup(netstat -rn).
+
+    and thats all there is to it.
+
+    PS. it goes without saying that you must first add the routes using the route add command before doing the above procedure. 
+
+
+Detalhe:
+
+A rede do desktop deve funcionar apenas o perfil teste. O outro deve estar parado (graficamente)
+
+Como somente pingava em IP e não em nomes, precisei adicionar o DNS ao resolv.conf.
+
+sudo nano /etc/resolv.conf
+nameserver 10.0.0.12
+nameserver 10.0.0.13
+
+
+Tanto a rota acima quanto o resolv.conf devem ser executados a cada boot.
+Precisam ficar no iniciar, talvez no /etc/rc.local
+
+nano /etc/rc.local
+
+Adicionar
+route add default gw 192.168.0.1
+
+Executar pelo terminal:
+
+sudo su
+echo "nameserver 10.0.0.12" >> /etc/rc.local
+echo "nameserver 10.0.0.13" >> /etc/rc.local
+
+Não funciona no rc.local. Preciso colocar em outro arquivo, mas como esta solução é provisória, não requer muito esforço para isso.
+
+Sequência:
+
+- Levantar a VM com o Zentyal
+- levantar a rota
+- Adicionar o DNS ao resolv.conf
+
+Para então ter internet no desktop
+

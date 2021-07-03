@@ -1,0 +1,111 @@
+Terminator - Multiterminais em Janela Única
+Autor: Givaldo José O Lins <givaldolins at gmail.com>
+Data: 09/03/2012
+
+Instalação e Facilidades
+
+
+Instalação
+Bom, antes de tudo, precisamos instalar o Software.
+
+Nas distribuições da família Debian:
+
+# apt-get install terminator
+
+Nas distribuições da família Red Hat:
+
+# yum install terminator
+
+Ou, se preferir, pelo código fonte:
+
+# wget -c https:// launchpad.net/terminator/trunk/0.96/+download/terminator-0.96.tar.gz
+# tar zxvf terminator-0.96.tar.gz
+# cd terminator-0.96/
+# ./setup.py install
+
+Agora, iremos aprender as facilidades que o Terminator disponibiliza.
+
+Descobrindo as Facilidades
+Agora, abra o Terminator:
+
+- Pode ser através do Menu de Aplicativos;
+- Apertando: Alt+F2. Digite: terminator, e tecle <ENTER>;
+- Pelo terminal, com o comando:
+
+terminator &
+
+Com o Terminator aberto, podemos aplicar as facilidades:
+
+- Dividindo os terminais:
+
+Podemos dividir a tela horizontalmente, pressionando: 'CTRL+SHIFT+O', ou clicando com o botão direito do mouse e selecionando a opção: Dividir Horizontalmente.
+
+Podemos dividir a tela verticalmente, pressionando: 'CTRL+SHIFT+E', ou clicando com o botão direito do mouse e selecionando a opção: Dividir Verticalmente.
+
+Podemos fazer essas divisões inúmeras vezes.
+
+- Movimentando-se entre os terminais:
+
+Para nos movimentarmos entre os terminais, podemos usar: 'Alt+direcionais' (Up, Down, Left, Right), ou ainda, selecionar o terminal com um clique do mouse.
+
+Para avançar entre os terminais, usamos: 'CTRL+SHIFT+N', ou usando: 'CTRL+TAB'. E para retornar: 'CTRL+SHIFT+P', ou usando: 'CTRL+SHIFT+TAB'.
+
+- Destacando um terminal:
+
+É possível ainda, destacar o terminal selecionado, dando Zoom com: 'CTRL+SHIFT+Z', ou clicando com o mouse no terminal e selecionando: Zoom Terminal.
+
+Podemos ainda destacar sem Zoom, com: 'CTRL+SHIFT+X', ou clicando com o mouse no terminal e selecionando: Maximizar Terminal.
+
+Em ambos os casos, para voltar é só clicar como o mouse e selecionar: Restaura todos os terminais. Ou, pressionando qualquer uma das combinações de teclas acima.
+
+- Agrupando terminais:
+
+Uma outra facilidade fantástica, é executar o mesmo comando em vários terminais ao mesmo tempo. Para isso, agrupamos todos os terminais com a combinação: 'SUPER+G', e para desagrupar: 'SUPER+SHIFT+G'.
+
+Observação: A tecla 'Super', é aquela feiosa...
+
+- Saindo. . .
+
+Para fechar um terminal, usamos: 'CTRL+SHIFT+W', e para fechar todos os terminais: 'CTRL+SHIFT+Q'.
+
+Outras Opções
+- Redimensionando:
+
+Para redimensionar os terminais, podemos fazer pressionando: 'CTRL+SHIFT+direcionais' (Up, Down, Left, Right), ou clicando com o mouse nas divisórias dos terminais e arrastando
+
+- Aumentando e diminuindo fonte:
+
+Fazemos com a combinação de: 'CTRL+plus' (+) para aumentar, e 'CTRL+minus' (-) para diminuir. E ainda: 'CTRL+0' (zero), para voltar ao tamanho padrão.
+
+-Copiando e colando:
+
+É possível copiar o texto selecionado com: 'CTRL+SHIFT+C', e colar com: 'CTRL+SHIFT+V', ou ainda, usando o mouse e selecionando Copiar ou Colar.
+
+- Barra de rolagem:
+
+Podemos esconder ou mostrar a barra de rolagem com: 'CTRL+SHIFT+S'.
+
+- Pesquisando:
+
+Podemos executar uma pesquisa na saída de um terminal, usando: 'CTRL+SHIFT+F'.
+
+Conclusão
+
+
+O Terminator é um programa que permite aos usuários usar terminais flexíveis no ambiente gráfico.
+
+É voltado para aqueles que normalmente utilizam vários terminais próximos um do outro, mas não quer usar um gerenciador de terminal baseado em abas.
+
+Ele é tão versátil que ainda possibilita que o usuário use abas caso prefira. E o recurso de agrupar terminais é ótimo para quem precisa acessar várias maquinas e executar o mesmo grupo de comandos.
+
+O Terminator ainda possui outras opções de facilidade que estão disponíveis no manual e pode ser consultado com o comando:
+
+man terminator
+
+Espero que este artigo possa ajudá-lo a facilitar seus afazeres com o terminal.
+
+Até a próxima!
+
+Givaldo Lins
+
+"Cuidado! Contém Linux, extremamente poderoso!" 

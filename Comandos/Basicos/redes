@@ -1,0 +1,238 @@
+Sample Network Configuration (centos7)
+
+Configurações do site da Vultr para seus servidores
+
+Location: 	Miami
+Main IP Address: 	45.63.104.148
+Important Information
+
+    In most cases, you should not need to adjust these files. Instances are normally configured using DHCP. You only really need to change these files if you are trying to enable additional IPs.
+    Changing to the examples below will cause problems if you take a snapshot of an instance and restore it. We recommend reverting back to DHCP before taking a snapshot.
+    You must restart your server via the control panel after adding extra IPs.
+
+CentOS, RHEL
+/etc/sysconfig/network-scripts/ifcfg-eth0
+
+DEVICE=eth0
+ONBOOT=yes
+BOOTPROTO=static
+IPADDR=45.63.104.148
+NETMASK=255.255.254.0
+GATEWAY=45.63.104.1
+DNS1=108.61.10.10
+
+/etc/sysconfig/network-scripts/route-eth0
+
+169.254.0.0/16 dev eth0
+
+Ubuntu 12.xx - 15.xx
+/etc/network/interfaces
+
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+	address 45.63.104.148
+	netmask 255.255.254.0
+	gateway 45.63.104.1
+	dns-nameservers 108.61.10.10
+	post-up ip route add 169.254.0.0/16 dev eth0
+
+
+Ubuntu 16.xx, Ubuntu 17.04
+/etc/network/interfaces
+
+auto lo
+iface lo inet loopback
+
+auto ens3
+iface ens3 inet static
+	address 45.63.104.148
+	netmask 255.255.254.0
+	gateway 45.63.104.1
+	dns-nameservers 108.61.10.10
+	post-up ip route add 169.254.0.0/16 dev ens3
+
+
+Ubuntu 17.10
+/etc/netplan/10-ens3.yaml
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens3:
+      dhcp4: no
+      addresses: [45.63.104.148/23]
+      gateway4: 45.63.104.1
+      nameservers:
+        addresses: [108.61.10.10]
+      routes:
+      - to: 169.254.0.0/16
+        via: 45.63.104.1
+        metric: 100
+
+Debian 7, Debian 8
+/etc/network/interfaces
+
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+	address 45.63.104.148
+	netmask 255.255.254.0
+	gateway 45.63.104.1
+	dns-nameservers 108.61.10.10
+	post-up ip route add 169.254.0.0/16 dev eth0
+
+
+Debian 9
+/etc/network/interfaces
+
+auto lo
+iface lo inet loopback
+
+auto ens3
+iface ens3 inet static
+	address 45.63.104.148
+	netmask 255.255.254.0
+	gateway 45.63.104.1
+	dns-nameservers 108.61.10.10
+	post-up ip route add 169.254.0.0/16 dev ens3
+
+
+FreeBSD
+/etc/rc.conf
+
+static_routes="linklocal"
+route_linklocal="-net 169.254.0.0/16 -interface vtnet0"
+ifconfig_vtnet0="inet 45.63.104.148 netmask 255.255.254.0"
+defaultrouter="45.63.104.1"
+
+
+OpenBSD
+/etc/mygate
+
+45.63.104.1
+
+/etc/hostname.vio0
+
+inet 45.63.104.148 255.255.254.0 NONE
+
+/etc/resolv.conf
+
+nameserver 108.61.10.10
+lookup file bind
+
+Fedora 24-27
+/etc/sysconfig/network-scripts/ifcfg-ens3
+
+DEVICE=ens3
+ONBOOT=yes
+NM_CONTROLLED=no
+BOOTPROTO=static
+NOZEROCONF=yes
+IPADDR=45.63.104.148
+NETMASK=255.255.254.0
+GATEWAY=45.63.104.1
+DNS1=108.61.10.10
+
+/etc/sysconfig/network-scripts/route-ens3
+
+169.254.0.0/16 dev ens3
+
+Windows Server
+To configure the main IPv4 manually:
+
+    Open the windows control panel. You can access it from the start menu.
+    Click "Network and Internet".
+    Click "Network and Sharing Center".
+    Click "Change adapter settings".
+    Right click on the primary ethernet adapter, and click "Properties". The "Ethernet Properties" window will open.
+    Select "Internet Protocol Version 4 (TCP/IPv4)", then click the "Properties" button. The "Internet Protocol Version 4 (TCP/IPv4) Properties" window will open.
+    Check the box that reads "Use the following IP address:". Populate the fields:
+        IP address: 45.63.104.148
+        Subnet mask: 255.255.254.0
+        Default gateway: 45.63.104.1
+    Check the box that reads "Use the following DNS server addresses:". Populate the fields
+        Preferred DNS server: 108.61.10.10
+        Alternate DNS server: (blank)
+    Click "OK". Then click "OK" on the "Ethernet Properties" window. The main IPv4 has been configured manually. Note that it is normal for the connection to hiccup after pressing "OK".
+
+
+===========
+
+Máscara Explicada
+
+Apenas para iluminar um pouco, aquele número que vem depois da barra "/"
+significa o número de bits que ele vai utilizar na mascara. Vejamos.
+
+Suponha que voce deixe 189.0.0.0/24, o que vai acontecer?
+
+1) Voce vai tentar conectar no IP do seu servidor a partir de seu IP de
+origem IP
+2) Seu servidor vai pegar o seu IP de origem e fazer um calculo de
+mascara usando 24 bits, numa comparação XOR bit-a-bit que vai resultar
+em 189.22.33.0
+3) Ele vai pegar o resultado do calculo acima e comparar com seu arquivo
+e vai identificar que 189.22.33.0 NÃO É IGUAL A 189.0.0.0.
+
+Portanto você tem que utilizar 189.0.0.0/8, pois assim ele vai pegar o
+seu IP IP, vai fazer uma comparacao XOR bit-a-bit e vai ter
+como resultado 189.0.0.0, com esse resultado ele vai comprar com o
+189.0.0.0 e vai reconhecer a IGUALDADE entre eles e vai aceitar.
+
+Em resumo.
+
+IP/8  => IP/255.0.0.0       = 192.0.0.0
+IP/16 => IP/255.255.0.0     = 192.168.0.0
+IP/24 => IP/255.255.255.0   = 192.168.1.0
+IP/32 => IP/255.255.255.255 = 192.168.1.12
+
+Outras mascaras são possíveis através de deslocamento de bit do parte da
+rede para o host, obtendo-se sub-redes, mas ai ja acabamos fungindo do
+escopo da lista.
+--
+Dickson S. Guedes 
+
+
+===========
+Comandos
+
+traceroute ip
+
+ip route
+
+Acessar página info.php internamente em modo texto
+curl http://127.0.0.1/info.php
+
+Ver
+sudo netstat -plutn
+
+PING
+O comando PING foi desenvolvido para identificar se um dispositivo na rede está respondendo ou não. O computador de origem envia um pacote de dados e através do protocolo ICMP, o servidor de destino devolve com uma resposta.
+A partir de então, é possível verificar outros dados como tempo de resposta, a famosa "latência" de dados que é o tempo que leva para o dado ir e voltar.
+
+Traceroute
+traceroute ip_dominio
+
+Traça a rota daqui até o ip_dominio mostrando os nós por onde passa
+
+MTR (My traceroute ou também conhecido antigamente por Matt's traceroute)
+O que vem à ser o MTR? Simples: A combinação do PING e do TRACERT em uma só ferramenta. 
+Ao mesmo tempo que você realiza o PING, você também realiza o TRACERT, e com a diferença de que: ele continua sendo executado para que você possa conferir o status atual da rede naquele exato momento.
+
+
+== Verificar Serviços em Execução
+
+netstat -tap | grep serviço
+netstat -tap | grep apache2
+
+
+== Ver serviços rodando
+
+netstat -nltp
+
+

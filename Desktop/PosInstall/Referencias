@@ -1,0 +1,128 @@
+Acesso Remoto
+https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+
+Navegadores
+https://www.google.com.br/chrome/
+https://www.opera.com/pt-br
+Plugin do Hangout - https://www.google.com/tools/dlpage/hangoutplugin/download.html
+
+Virtualização
+https://download.virtualbox.org/virtualbox/5.2.22/virtualbox-5.2_5.2.22-126460~Ubuntu~bionic_amd64.deb
+https://download.virtualbox.org/virtualbox/5.2.22/Oracle_VM_VirtualBox_Extension_Pack-5.2.22.vbox-extpack
+https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.deb
+
+Citrix Xen Server Community
+XenServer Base Installation ISO - Free Edition baixar também o Update
+https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-76-free-edition.html
+Xen Center Windows Management Console e Localization Version
+https://www.citrix.com/downloads/citrix-hypervisor/product-software/xenserver-76-free-edition.html
+https://docs.citrix.com/en-us/xenserver/current-release.html
+
+IDEs e Editores
+NetBeans 8.2 (HTML5/JavaScript) e PHP - https://netbeans.org/downloads/
+Eclipse para PHP - https://www.eclipse.org/pdt/
+http://code.visualstudio.com
+https://www.sublimetext.com/3
+
+Somente for Windows
+https://www.adobe.com/br/products/dreamweaver/free-trial-download.html
+https://notepad-plus-plus.org/download/
+
+Cloud IDE
+https://www.openshift.com/
+http://che.openshift.io
+https://webmakerapp.com/ - Documentação - https://webmakerapp.com/docs/#/
+https://github.com/websiteduck/Run-PHP-Code
+
+GitHub
+https://www.thinkful.com/learn/a-guide-to-using-github-pages/
+
+Gerador de Aplicativos em PHP for Windows com MySQL, PostgreSQL, SQLite, SQL Server, Firebird, Oracle, ASA, DB2, MaxDB
+https://www.sqlmaestro.com/download/
+Esta versão trabalha com todos os SGBDs suportados
+Versão free - https://www.sqlmaestro.com/files/anysql_maestro_free_setup.exe
+Versão comercial - https://www.sqlmaestro.com/files/anysql_maestro_pro_setup.exe
+
+CMS
+Portais - https://downloads.joomla.org/
+
+Blogs - https://pt.wordpress.org/download/
+
+Lojas Virtuais
+https://www.opencart.com/index.php?route=cms/download
+https://www.prestashop.com/en/download
+https://magento.com/tech-resources/download
+
+Forum
+https://www.phpbb.com/downloads/
+
+E-learning
+https://download.moodle.org/
+
+Framework
+CakePHP - 3.7
+https://book.cakephp.org/3.0/en/installation.html
+https://github.com/cakephp/cakephp/releases
+composer create-project --prefer-dist cakephp/app nome_app
+
+Laravel
+https://laravel.com/docs/5.7#installation
+https://github.com/laravel/laravel
+composer create-project --prefer-dist laravel/laravel nome_app
+
+Tutoriais
+W3C - https://www.w3schools.com/
+Frontend - HTML, JavaScript, CSS, BootStrap 3 e 4, jQuery, AngularJS, JSON, AJAX, XML, XPATH, XQuery
+Backend - SQL, PHP, Python, Java, ASP, NodeJS, Raspberri Pi
+MySQL
+Com exercícios vivos
+
+Administração de Bancos de Dados
+https://www.dbvis.com/download/10.0 - Gerador de DER para MySQL, PostgreSQL e outros
+https://www.sqlmaestro.com/ - Gerenciador de vários SGBDs
+https://www.adminer.org/#download - Gerenciador web em PHP. Um único arquivo - https://github.com/vrana/adminer/releases/download/v4.7.0/adminer-4.7.0.php
+
+Produtividade em Equipe
+Slack - Comunicação para grupos de programadores, administradores e qualquer grupo - https://slack.com/
+Trello - https://trello.com/ - Gerenciamento de projetos online
+Evernote - https://evernote.com/intl/pt-br/
+
+Hospedagem free para sites/blogs
+http://cloudaccess.net
+https://www.000webhost.com/
+https://www.freehostia.com/
+
+CloudIDE
+https://openshift.io/
+http://che.openshift.io
+https://cloud.google.com/
+https://aws.amazon.com/pt/
+
+Servidores tipo VPS
+https://www.digitalocean.com/
+https://www.vultr.com/
+
+Outros via pacotes
+
+Java 8 da Oracle
+sudo apt remove --purge openjdk-*
+sudo add-apt-repository -y ppa:webupd8team/java
+sudo apt update
+sudo apt install -y oracle-java8-installer
+
+Gerenciador de arquivos tipo Norton Commander
+sudo apt-get install gnome-commander
+
+StickyNotes - Tipo Post It
+sudo apt-add-repository ppa:umang/indicator-stickynotes
+sudo apt-get update
+sudo apt-get install indicator-stickynotes
+
+NodeJS
+https://nodejs.org/en/
+
+Remasterização de Linux
+Respin (Debian, Ubuntu e Mint) - http://www.linuxrespin.org/
+Ubuntu e Mint usando squashfs-tools - https://www.915tx.com/remaster/
+
+

@@ -1,0 +1,28 @@
+Compartilhar rede wifi entre windows e linux
+
+No Linux (Mint)
+
+sudo apt install samba
+
+sudo apt install caja-share
+
+Abrir o nemo
+
+Selecionar a pasta a ser compartilhada
+Clicar nela com o botão direito
+Opções de compartilhamento
+Clicar no botão Compartilhar esta pasta
+Marcar as opções desejadas
+Criar compartilhamento
+
+No Windows
+
+Abrir o ambiente de rede e detectar a rede
+
+Caso não apareça a máquina do linux
+
+Clicar na barra location e digitar o IP da máquina linux
+
+\\192.168.10.33
+
+Então poderá mapear a unidade

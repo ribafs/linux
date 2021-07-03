@@ -1,0 +1,16 @@
+Executar o fdisk
+
+/sbin/fdisk
+
+Comandos de rede como ifconfig
+sudo apt install net-tools
+
+/sbin/ifconfig
+
+Configurar Firefox para uma fonte mais visível como a Fira Code ou Days One e em Avançado
+Desmarcar: Permitir que as páginas escolham suas próprias fontes
+
+Add windows 10 ao grub
+
+sudo grub-update
+sudo grub-install /dev/sda

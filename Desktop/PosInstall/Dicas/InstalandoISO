@@ -1,0 +1,18 @@
+Instalando a ISO do Linux Mint Web 1.2
+
+- Criar uma máquina virtual com a ISO ou instalar numa partição
+- Ao iniciar com login e senha "mintweb" clicar em Menu
+- Digitar
+instalar
+- Clicar com o botão direito em Instalar RELEASE
+Criar atalho na área de trabalho
+
+- Fechar
+
+- Clicar com o botão direito do mouse sobre o atalho criado no desktop
+Propriedades
+
+Copie o comando e cole no terminal
+Execute e mantenha o terminal aberto até o final da instalação
+
+

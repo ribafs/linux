@@ -1,0 +1,54 @@
+Permissões no diretório web
+
+A ideia é ter um grupo de desenvolvedores trabalhando num servidor web e todos com permissão total sobre o /var/www/html
+
+No Linux por padrão, quando alguém cria um arquivo ele é dono do mesmo e ninguém mais mexe, exceto o root.
+
+A idéia aqui é quando um criar ou alterar um arquivo os demais continuam com o mesmo acesso, pois as permissões serão setadas para o grupo.
+
+Criar o grupo webdevel
+
+sudo addgroup webdevel
+
+Adicionar o www-data ao webdevel
+sudo adduser www-data webdevel
+
+Adicionar cada usuário do grupo de desenvolvedores ao grupo webdevel
+sudo adduser ribafs webdevel
+
+
+Usando o umask para que mantenha permissões de escrita para o dono e o grupo por default
+
+umask 002
+
+Adicionar ao ~/.bashrc de cada desenvolvedor
+su - ribafs
+nano .bashrc
+Adicionar ao final
+umask 002
+
+Efetuar logout para que tenha efeito
+
+Para ajustar a permissões dos arquivos e pastas existentes executar o script abaixo
+
+sudo adduser ribafs www-data
+
+sudo nano /usr/local/bin/local
+
+#!/bin/sh
+clear;
+echo "Aguarde enquanto configuro as permissões do /var/www/local/$1";
+echo "";
+chown -R ribafs:www-data /var/www/local/$1;
+find /var/www/local/$1 -type d -exec chmod 775 {} \;
+find /var/www/local/$1 -type f -exec chmod 664 {} \;
+echo "";
+echo "Concluído!";
+
+sudo chmod +x /usr/local/bin/local
+
+Com este script tanto podemos varrer todo o diretório html com:
+sudo perms
+
+Quanto podemos varrer apenas um sundiretório do html com:
+sudo perms diretorio1

@@ -1,0 +1,129 @@
+AB - Apache HTTP server benchmarking tool
+
+https://httpd.apache.org/docs/current/pt-br/programs/ab.html
+
+ab is a tool for benchmarking your Apache Hypertext Transfer Protocol (HTTP) server. It is designed to give you an impression of how your current Apache installation performs. This especially shows you how many requests per second your Apache installation is capable of serving.
+
+ab [ -A auth-username:password ] [ -b windowsize ] [ -B local-address ] [ -c concurrency ] [ -C cookie-name=value ] [ -d ] [ -e csv-file ] [ -f protocol ] [ -g gnuplot-file ] [ -h ] [ -H custom-header ] [ -i ] [ -k ] [ -l ] [ -m HTTP-method ] [ -n requests ] [ -p POST-file ] [ -P proxy-auth-username:password ] [ -q ] [ -r ] [ -s timeout ] [ -S ] [ -t timelimit ] [ -T content-type ] [ -u PUT-file ] [ -v verbosity] [ -V ] [ -w ] [ -x <table>-attributes ] [ -X proxy[:port] ] [ -y <tr>-attributes ] [ -z <td>-attributes ] [ -Z ciphersuite ] [http[s]://]hostname[:port]/path
+
+sudo apt-get update
+sudo apt-get install apache2-utils
+
+A URL precisa terminar com /
+
+Exemplos:
+
+ab -n 10000 -c 50  -k google.com.br/
+
+10 mil requisições e 50 usuários, 200 requisições por usuário, o que é um pouco absurdo, mas a ideia do teste é exatamente essa, ver os limites, claro que para um bom teste deve verificar o que quer testar e de acordo com a necessidade prevista para o seu site.
+
+
+Você quer simular, um acesso com 10 usuários usando ao mesmo tempo seu site ou o mais próximo disso e cada um visitou 20 páginas ou fez 20 requisições ao seu site:
+ab -n 200 -c 10  -k seusite.com.br/
+
+Testando com 100 conexões em modo "Keep Alive" e com tempo de 30 segundos para ser realizado o teste. 
+
+ab -kc 100 -t 30 http://127.0.0.1/ 
+
+Aumentando o número de requisições para 10000, sendo 100 usuários concorrentes. 
+
+ab -n 10000 -c 100 http://localhost/
+
+
+The simplest test you can do is to perform 1000 requests, 10 at a time (which approximately simulates 10 concurrent users getting 100 pages each - over the length of the test).
+
+ab -n 1000 -c 10 -k -H "Accept-Encoding: gzip, deflate" http://www.example.com/
+
+ab -l -r -n 100 -c 10 -k -H "Accept-Encoding: gzip, deflate" http://www.example.com/
+
+-n 1000 is the number of requests to make.
+
+-c 10 tells AB to do 10 requests at a time, instead of 1 request at a time, to better simulate concurrent visitors (vs. sequential visitors).
+
+-k sends the KeepAlive header, which asks the web server to not shut down the connection after each request is done, but to instead keep reusing it.
+
+This is 100 sequential page loads by a single user:
+ab -l -r -n 100 -c 1 -k -H "Accept-Encoding: gzip, deflate" http://www.example.com/blog/
+
+This is 50 page loads (total) by 5 different concurrent users, each user is doing 10 sequential pages loads.
+ab -l -r -n 50 -c 5 -k -H "Accept-Encoding: gzip, deflate" http://www.example.com/blog/
+
+This is 100 page loads by 10 different concurrent users, each user is doing 10 sequential pages loads.
+ab -l -r -n 100 -c 10 -k -H "Accept-Encoding: gzip, deflate" http://www.example.com/blog/
+
+This is 600 page loads by 30 different concurrent users, each user is doing 20 sequential pages loads.
+ab -l -r -n 600 -c 30 -k -H "Accept-Encoding: gzip, deflate" http://www.example.com/blog/
+
+This is 2700 page loads by 90 different concurrent users, each user is doing 30 sequential pages loads.
+ab -n 2700 -c 90 -k -H "Accept-Encoding: gzip, deflate" http://www.example.com/blog/
+
+ab -n 100 -c 10 -k -H "Accept-Encoding: gzip, deflate" http://localhost:yourport/
+
+
+#!/bin/sh
+
+ab -n 100 -c 10 http://127.0.0.1:8300/test.cfm > test1.txt &
+ab -n 100 -c 10 http://127.0.0.1:8300/scribble.cfm > test2.txt &
+
+Usage: ab [options] [http[s]://]hostname[:port]/path
+Options are:
+    -n requests     Number of requests to perform
+    -c concurrency  Number of multiple requests to make
+    -t timelimit    Seconds to max. wait for responses
+    -b windowsize   Size of TCP send/receive buffer, in bytes
+    -p postfile     File containing data to POST. Remember also to set -T
+    -T content-type Content-type header for POSTing, eg.
+        'application/x-www-form-urlencoded'
+        Default is 'text/plain'
+    -v verbosity    How much troubleshooting info to print
+    -w              Print out results in HTML tables
+    -i              Use HEAD instead of GET
+    -x attributes   String to insert as table attributes
+    -y attributes   String to insert as tr attributes
+    -z attributes   String to insert as td or th attributes
+    -C attribute    Add cookie, eg. 'Apache=1234. (repeatable)
+    -H attribute    Add Arbitrary header line, eg. 'Accept-Encoding: gzip'
+        Inserted after all normal header lines. (repeatable)
+    -A attribute    Add Basic WWW Authentication, the attributes
+        are a colon separated username and password.
+    -P attribute    Add Basic Proxy Authentication, the attributes
+        are a colon separated username and password.
+    -X proxy:port   Proxyserver and port number to use
+    -V              Print version number and exit
+    -k              Use HTTP KeepAlive feature
+    -d              Do not show percentiles served table.
+    -S              Do not show confidence estimators and warnings.
+    -g filename     Output collected data to gnuplot format file.
+    -e filename     Output CSV file with percentages served
+    -r              Don't exit on socket receive errors.
+    -h              Display usage information (this message)
+    -Z ciphersuite  Specify SSL/TLS cipher suite (See openssl ciphers)
+    -f protocol     Specify SSL/TLS protocol (SSL2, SSL3, TLS1, or ALL)
+
+
+Performance Gains
+
+For top performance gains use –
+
+1. Apache’s mod_cache module to cache page requests/results. This will produce 5-10x the performance gains over all other methods combined.
+
+2. PHP’s Zend OPcache extension to cache PHP scripts as compiled objects. This will produce a 3-5x Requests Per Second speed up.
+
+3. memcached + php_memcache setup to cache PHP script’s or web-app’s internal data and results. This can produce a good 50%-100% performance gain.
+
+4. Cache plugins and/or setting adjustments specific to the web-app: Cache plugins for WordPress, Speedup tips for PrestaShop, etc.
+
+5. mod_expires to make the client’s (visitor’s) Browser cache pages and page assets for a given time, instead of re-getting those pages and assets on each page load.
+
+* Some of these are more difficult to configure and set up than others.
+
+Also, in my experience, the switch from 32 bit to 64 bit Apache, PHP, and MySQL versions only provides limited/marginal performance gains (and in some cases it’s even negative).
+
+To sum everything up, 99% of all performance gains will come from utilizing Apache’s caching mechanisms (via mod_cache), using PHP Zend OPcache (extension), and afterwards (once the bottleneck is moved from Apache with PHP to MySQL), improving MySQL performance by tuning my.ini settings, and optimizing/restructuring MySQL queries by utilizing MySQL’s Slow Query log (to see what the problem is).
+
+Having said that, there are also performance robing issues that can exist on the OS, in the Apache/MySQL/PHP settings, and even the client’s Browser, that are covered here –
+http://www.devside.net/wamp-server/wamp-is-running-very-slow
+
+https://www.devside.net/wamp-server/load-testing-apache-with-ab-apache-bench
+https://www.codemarket.com.br/site/usando-o-ab-apachebench-para-teste-de-desempenho-e-stress
+https://ikvasnica.com/blog/load-test-multiple-api-endpoints-concurrently-use-this-simple-shell-script/

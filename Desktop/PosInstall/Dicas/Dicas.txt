@@ -1,0 +1,44 @@
+== CMS
+
+Portais
+Joomla - https://downloads.joomla.org/
+
+Blogs
+WordPress - https://pt.wordpress.org/download/
+
+Lojas Virtuais
+OpenCart - https://www.opencart.com/index.php?route=cms/download
+
+E-learning
+Moodle - https://download.moodle.org/releases/latest/
+
+Forum
+phpBB3 - https://www.phpbb.com/downloads/
+
+
+== Framework
+
+CakePHP - https://github.com/cakephp/cakephp/releases
+
+sudo composer create-project --prefer-dist cakephp/app blog
+sudo perms cake
+Abrir o aplicativo blog no navegador para ser configurado e instalado
+http://localhost/cake/blog
+
+
+== Servidor nas nuvens free
+
+Joomla e Wordpress:
+
+http://cloudaccess.net
+
+Máquina Virtual com recursos e espaço de 500MB e uma IDE
+
+
+== Servidores free para Joomla e outros
+
+http://freehostia.com
+http://000webhost.com
+
+
+

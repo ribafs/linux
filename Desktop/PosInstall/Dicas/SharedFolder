@@ -1,0 +1,25 @@
+1) Create a folder on your host machine
+
+2) Start VirtualBox and open the settings for your Mint system.
+
+Add a "Machine Folder" and select the folder you want to share
+
+Check the "Make Permanent" box so you don't have to repeat these steps.
+
+You can then check "Auto-mount"
+
+4) Start your virtual OS.
+
+If you checked "Auto-mount" in step 2) the share folder will actually be mounted in /mdeia. 
+The problem is that your user isn't a member of the vboxsf group (meanig you can't open it). We can fix this by adding our-self to the group:
+
+Abra o terminal da VM
+sudo gpasswd -a mintweb vboxsf
+sudo reboot
+
+
+You should now be able to navigate to the folder:
+
+Code: Select all   Expand view
+        cd /media/sf_<ShareName>/
+

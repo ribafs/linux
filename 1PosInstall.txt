@@ -1,0 +1,72 @@
+Ubuntu 20.10
+
+== Sudo sem senha
+
+sudo bash -c 'echo "$(logname) ALL=(ALL:ALL) NOPASSWD: ALL" | (EDITOR="tee -a" visudo)'
+
+== Setar uma senha para o root
+
+sudo su
+passwd root
+
+sudo apt remove --purge timeshift
+
+== Customizar o Prompt de comandos
+
+nano .bashrc
+
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\W\[\033[00m\] '
+
+    PS1='Loc ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\W\[\033[00m\] '
+
+Original
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+== Ativar uso das teclas de função sem a Fn em notebooks
+
+Fn+Esc
+	
+== Desabilitar o Touchpad em nootbooks com eclado externo pelo menu
+
+== Configurar relógio para mostrar também a data
+Se necessário mostrar também os segundos
+
+== Atalhos no Nemo/Nautilus
+- Remover alguns atalhos
+- Adicionar os meus (abrir a pasta e Ctrl+D)
+
+== Configurar teclas de atalho customizadas
+Menu - Teclado - Atalhos - Atalhos personalizados - Adicionar atalho personalizado
+
+- firefox - f
+- xed/gedit - n
+- libreoffice -writer - o
+- diário - libreorrice /backup/github/pessoais/pessoais/DiarioBipolarGH.odt -d
+- Bandeira+E - acessa nemo (Default no Mint, como no windows)
+- Nemo - Ctrl+Alt+E (lembrando de quando usava windows, bandeira e E)
+- kolourpaint - k
+- Busca pelo conteúdo - Search Monquei - Ctrl+Alt+B
+- Screenshot - gnome-screenshot --interactive - Ctrl+Alt+S
+- Terminal (Ctrl+Alt+T) - gnome-terminal --working-directory=/backup/www --window --maximize
+
+- Desligar - gnome-session-quit --power-off --force (Padrão no mint 20.1)
+
+==Configurar LibreOffice Writer para salvar no /backup/transp e a fonte Time new roman
+
+Ferramentas - Autocorreção - Opções de autocorreção. Mudar ' e "
+Remover Substituição de -> por → 
+Tornar Time new roman a fonte default para o Writer
+
+==Firefox
+- Sincronizar Firefox
+
+== Instalar LAMP e cia via
+ubuntu-2010.sh
+
+== Configurar php e apache
+
+== Desabilitar o serviço do postgres, caso não vá usar agora
+
+service postgresql stop
+sudo systemctl disable postgresql
+

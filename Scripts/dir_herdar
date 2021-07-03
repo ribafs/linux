@@ -1,0 +1,8 @@
+Para que novos diretórios herdem o grupo do atual, no caso /backup/www, que tem como grupo o www-data
+
+sudo chmod g+s -R /backup/www
+
+Assim todos os novos arquivos e diretórios copiados para /backup/www já chegam com o grupo www-data
+
+Só funciona copiando e colando.
+Movendo não leva o grupo www-data

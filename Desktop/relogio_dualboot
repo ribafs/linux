@@ -1,0 +1,7 @@
+Quando usamos Linux com Windows em dualboot
+após reiniciar e acessar e voltar para o Linux o relógio atraza 3 horas
+
+Execute esse comando no terminal:
+timedatectl set-local-rtc 1 --adjust-system-clock
+
+Depois quando entrar no Windows, é só ajustar o horário correto uma única vez,

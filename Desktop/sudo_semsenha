@@ -1,0 +1,10 @@
+Usar sudo sem senha
+
+sudo bash -c 'echo "$(logname) ALL=(ALL:ALL) NOPASSWD: ALL" | (EDITOR="tee -a" visudo)'
+
+Salvar e fechar o terminal e abrir novamente
+
+Testando:
+
+sudo clear
+

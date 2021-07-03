@@ -1,0 +1,57 @@
+sudo nano /usr/local/bin/perms
+sudo chmod+x /usr/local/bin/perms
+
+#!/bin/sh
+clear;
+echo "Aguarde enquanto configuro as permissões do /var/www/html/$1";
+echo "";
+chown -R www-data:www-data /var/www/html/$1;
+find /var/www/html/$1 -type d -exec chmod 775 {} \;
+find /var/www/html/$1 -type f -exec chmod 664 {} \;
+echo "";
+echo "Concluído!";
+
+Executar com:
+
+sudo perms subdir
+
+Exemplo: subdir
+/var/www/html/subdir
+=======
+
+sudo nano /usr/local/bin/back
+sudo chmod+x /usr/local/bin/back
+
+#!/bin/sh
+clear;
+echo "Aguarde enquanto configuro as permissões do /backup/www/$1";
+echo "";
+chown -R www-data:www-data /backup/www/$1;
+find /backup/www/$1 -type d -exec chmod 775 {} \;
+find /backup/www/$1 -type f -exec chmod 664 {} \;
+echo "";
+echo "Concluído!";
+
+=======
+sudo nano /home/username/perms
+sudo chmod +x /home/username/perms
+
+find $1 -type d -exec chmod 755 {} \;
+find $1 -type f -exec chmod 654 {} \;
+
+sudo sh perms nome.arq
+
+
+sudo nano /usr/local/bin/wgetd
+
+wget \
+     --recursive \
+     --no-clobber \
+     --page-requisites \
+     --html-extension \
+     --convert-links \
+     --restrict-file-names=windows \
+     --no-parent \
+         $1
+
+

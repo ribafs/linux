@@ -1,0 +1,219 @@
+Instruções para Remasterizar o Linux Mint 19.2 usando o squashfs-tools
+Também funciona com o Ubuntu
+
+https://www.915tx.com/remaster/
+
+Criar uma remasterização do zero, partindo da ISO baixada
+
+1 - Instalar softwares necessários
+
+Vou usar a home:
+/home/mintweb
+
+1A == No seu desktop abra o terminal e execute:
+sudo apt-get install squashfs-tools genisoimage resolvconf
+
+
+1B == Faça o download da imagem ISO do Mint 19.2 e mova para a pasta home do seu usuário, no meu caso
+/home/mintweb
+https://linuxmint.com/edition.php?id=254
+
+
+2 - Construir a ISO
+
+2A == Execute os seguintes comandos
+
+sudo clear
+
+mkdir ~/livecdtmp
+cd ~/livecdtmp
+mkdir extract-cd mnt
+sudo mount -o loop ~/linuxmint-19-cinnamon-64bit-v2.iso mnt
+sudo rsync --exclude=/casper/filesystem.squashfs -a mnt/ extract-cd
+sudo unsquashfs mnt/casper/filesystem.squashfs
+sudo mv squashfs-root edit
+sudo cp /etc/resolv.conf edit/etc/
+sudo mount --bind /dev/ edit/dev
+sudo chroot edit
+mount -t proc none /proc && mount -t sysfs none /sys && mount -t devpts none /dev/pts
+export HOME=/root && export LC_ALL=C 
+cd /etc/skel
+mkdir Desktop Downloads
+cd /
+
+Vá para o passo 3 para Modificar o sistema
+
+
+2B == Continuar o projeto
+
+Abrir terminal
+
+cd livecdtmp
+sudo mount --bind /dev/ edit/dev
+sudo chroot edit
+mount -t proc none /proc && mount -t sysfs none /sys && mount -t devpts none /dev/pts
+
+Volte para o passo 3B para adicionar e remover programas
+
+
+2C == Sair do chroot
+
+Ainda no chroot execute:
+
+apt-get clean
+apt-get autoremove
+rm -rf /tmp/* ~/.bash_history
+umount /proc
+umount /sys
+umount /dev/pts
+exit
+sudo umount edit/dev
+sudo umount mnt
+
+O projeto está pronto para ser construído ou pode voltar para a fase 2B e efetuar alterações
+
+
+2D == Construindo a ISO
+
+Abra o terminal e execute:
+
+cd livecdtmp
+sudo mksquashfs edit extract-cd/casper/filesystem.squashfs
+sudo nano extract-cd/README.diskdefines
+cd extract-cd
+sudo rm MD5SUMS
+cd ..
+sudo mkisofs -r -V "REMASTER" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../LinuxMintWeb9-1a-64.iso extract-cd
+cd ..
+sudo chmod 655 LinuxMintWeb9-1a-64.iso
+
+Vá ára o passo 4A
+
+
+3 - Modificar o sistema (após ter executado os passos 2A e 2B)
+
+3A == Atualizar repositórios e instalar atualizações
+
+apt update
+apt upgrade
+exit
+sudo reboot
+
+Voltar para o 2B para continuar o projeto
+
+
+3B == Instalar softwares dos repositórios
+
+No terminal chroot execute para instalar novos pacotes:
+
+(Obs.: Executar linha a linha para verificar se tem erro)
+
+apt install -y laptop-mode-tools preload audacity soundconverter 
+
+apt install -y apache2 libapache2-mod-php7.2 aptitude mc git composer
+apt install -y mysql-server postgresql sqlite3 pgadmin3 phpmyadmin
+apt install -y php7.2-bcmath php7.2 mcrypt php7.2-gd php7.2-mysq php7.2-intl
+apt install -y php-pear php7.2-xml  php7.2-xsl curl php7.2-curl phpunit php-xdebug
+apt install -y php7.2-zip php7.2-mbstring php7.2-fpm
+apt install -y php-apcu
+wget http://ftp.ussg.iu.edu/linux/ubuntu/pool/main/m/memcached/memcached_1.5.10-0ubuntu1_amd64.deb
+dpkg -i memcached_1.5.10-0ubuntu1_amd64.deb
+apt install -y php-memcache
+# Mudar display_error para On e timezone para America/Fortaleza
+nano /etc/php/7.2/apache2/php.ini
+# Adicionar a linha
+# ServerName localhost
+# Mudar os 3 primeiros
+# AllowOverride None
+# Para
+# AllowOverride All
+nano /etc/apache2/apache2.conf
+apt-get install -y alarm-clock-applet gparted myspell-pt-br ttf-mscorefonts-installer rar unrar zip unzip p7zip-full k3b kolourpaint4 shutter searchmonkey dconf-editor korganizer mint-meta-codecs vokoscreen gtk-recordmydesktop
+apt update
+apt upgrade
+
+
+3C == Ativar o firewall por padrão (opcional)
+
+nano /etc/ufw/ufw.conf
+
+Mudar
+ENABLE de "no" para "yes"
+
+Exemplo
+ENABLED=yes
+
+4 - Customizar o desktop e o tema
+
+Reinicie
+
+exit
+sudo reboot
+
+Vá para o passo 2D para construir a ISO
+
+
+4A == Crie uma nova VM no VirtualBox e use a ISO LinuxMintWeb9-1a-64.iso criada
+
+PAREI
+
+Após o boot customize o desktop como desejar
+Instalar o VirtualBox e Extensões na VM após instalar
+Criar a pasta compartinhada e adicionar o usuário mintweb ao vboxsf
+Somente então Instalar adicionais de convidado e reiniciar
+
+nETbEANS 8.2 PHP E HTML
+
+Altere/adicione menus e itens de menu
+Crie teclas de atalho customizadas
+Criar atalhos no desktop
+Instalar pacotes de idioma que faltem
+Adicionar programas para a Inicialização - Menu - Aplicativos da inicialização
+Efetuar outras alterações no sistema como desejar
+
+Efetuar logout e voltar
+Sem senha?
+
+Salvar arquivos de configuração
+
+Tenha em mãos um pendrive para guardar os arquivos de configuração
+Crie uma pasta "mintweb19_1" no pendrive
+Abra o gerenciador de arquivos nemo
+Estará na pasta /home/mintweb
+Tecla Ctrl+H para mostrar os arquivos ocultos
+
+Copie as seguintes pastas para a pasta mintweb19_1 do pendrive:
+.config, .gconf e .cinnamon
+
+Caso tenha arquivos ou pastas no Desktop também copie para o pendrive
+
+Reiniciar e voltar para o seu desktop
+
+Abra o nemo como root.
+No terminal digite
+
+gksu nemo
+
+Copiar os seguintes arquivos para o pendrive:
+
+/home/mintweb/livecdtmp/edit/etc/skel/
+
+Reconstruindo a ISO criada usando o passo 2D para adicionar estes arquivos do pendrive
+Mude o nome da iso para 
+
+LinuxMint19_1a.iso
+
+Testando
+
+Crie uma nova VM usando a ISO LinuxMint19_1a.iso com 1MB de RAM e 20GB de disco se tem 4GB de RAM no seu desktop
+
+Após testar completamente sem erros criar um script usando dialog, enviar para o GitHub e divulgar.
+
+
+X == Instalar pacotes extras
+
+Google Chrome: https://www.google.com/chrome/#eula 
+Hangouts plugin: https://www.google.com/tools/dlpage/hangoutplugin/download.html
+Teamviewer: https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+
+

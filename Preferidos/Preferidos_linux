@@ -1,0 +1,364 @@
+Seleção de alguns dos inúmeros softwares disponíveis para instalação no Linux Mint 20.1
+Através do Gerenciador de Aplicativos no Modo Gráfico
+
+Selecionei apenas alguns que me chamaram mais a atenção e para o modo gráfico (a maioria)
+
+Acessórios
+
+mc - Midnight Commander. Gerenciador de arquivos para o terminal, com muitos e bons recursos. Já abre com dois paineis, como posso fazer no nemo
+Luckybackup, Timeshift e Deja-dup - Softwares para backup
+ClamTk - Cliente gráfico para o Clamav (varrer virus de windows em máquinas linux)
+Psensor - temperatura hardware
+Ksysguard - monitor de processos
+Kcalc - Calculadora
+Lshw-gtk - Informações sobre configurações de hardware  
+Kfind, Catfish, Searchmonkey (procura arquivos, inclusive pelo conteúdo e em ODF e OOXML)
+Loook (procurar string em ODF e OOXML)
+Tiled - editor de mapas de tiles
+Jstest - Teste e configuraçãod e joystick
+Wallch - mudar papel de parede
+Nemo, Spacefm, Thunar, Tuxcmd e Doublecmd-qt, tuxcmd, konqueror - Gerenciadores de arquivos
+Glogg - Log explorer com qt
+Gworldclock - date e hora com timezone
+Kdf - info de discos
+Grub-customizer
+Bomaga - Pré-visualizar impressão
+Keyboard-configuration
+wget - baixar arquivos e continuar sownload se cair. Baixa um site completo com camadas, etc
+
+Ciência e Educação
+
+Stellarium - Ver o céu
+Gnumeric - Planilha
+Tuxpaint - editor de imagens para jovens
+Klavaro - tutor de digitação
+Tuxtype - jogo de datilografia
+Calculator - calcualadora científica
+Arduino - IDE e bibliotecas
+Bibletime - Estudar a bíblia
+Solfege - trainamento de ouvido
+Maxima, Wxmaxima, Mathomatic, Kalgebra - álgebra
+Tuxmath - Jogo de matemática para crianças
+Scilab - cálculos numéricos científico
+Marble - Mapa do globo
+Vym - Mapas mentais
+Gelemental - Tabela peródica
+Gchenpain - Editor de estruturas químicas
+Qgis - info geográficas
+Saga - Análise científica
+Planets - Similação de gravidade em planetas
+Algebox - intro algoritmos
+Avogrado - Modelagem e gráficos moleculares
+Scratch - Ambiente de programação apra qualquer idade. https://scratch.mit.edu/
+Aeskulap - Visualizados de imagens médicas
+Grace - Plotagem de gráficos XY (plano cartesiano)
+Lybniz - plotar gráficos matemáticos
+Biogenesis - simulador de evolução de organismos (vida artificial)
+Jclic - desenvolvimento de atividades educacionais multimídia
+Julia - Linguagem de programação de alta eprformance
+Tilem - emulador de calculadora do Z80
+Turtle - Ambiente de programação educacional (logo?)
+Retext - Markdown
+Sigil - editor de ebooks
+Notepadqq - Similar ao notepad++ no linux
+Gnome-builder - IDE para programar para Gnome
+Aghermann - Pesquisa experimental sobre o sono
+
+Desenvolvimento
+
+Netbeans - IDE para Java, PHP, JavaScript, etc
+Codeblocks - IDE para C/C++
+Sublime Text
+QtCreator
+Lazarus, Lazarus-ide - IDE para free pascal
+Geogebra - Programa de matemática para estudantes e educadore
+Sweethome3d - Software de desenho arquitetônico com inteirores em 2D e visualização em 3D
+Pychess - Xadrez
+Spyder, Spyder3 - IDE em Python para cientistas
+Eric - IDE para Python
+Glade - IDE para GTK+
+Sqlitebrowser - GUI para o SQLite
+GAMBAS 3 - Programação gráfica para linux que usa VB como referência
+Kdevelop - IDE para C/C++
+Kdevelop-php - IDE para PHP
+Devhelp - Criador de help do Gnome
+Regexxer - Expressões regulares
+Geany, Bluefish - IDE para PHP
+Localize - tradução
+Qtqr - Gerar e decodificar QRCode
+Kimagemapeditor - edição de mapas de iamgem HTML
+
+Escritório
+
+LibreOffice - Pacote office, contendo processador de textos, Planilha, Apresentação, Desenho, Bancos de Dados, Fórmulas Matemáticas, Documento HTML e XML, Etiquetas, Cartões de Visitas, Modelos. Plugins de integração com Colibre. Converte para PDF em um clique
+Kate - editor de texto com muitos recursos
+jEdit - editor para programaçõ
+Frescobaldi - editor musical
+Freeplane - mapas mentais
+Juffed - editor de textos
+
+Ferramentas de Sistema
+
+Wine - emulador de programas windows
+Guake - terminal gráfico?
+Synaptic - Gerenciador gráfico de pacotes
+Gedit - editor de textos oficial do Gnome
+Terminator - terminal com múltiplas janelas
+Gufw - Interface gráfica para o firewall UFW
+USB-creator-gtk
+USB-creator-kde
+Boot-repair
+Mintdrivers
+Galternatives - Configuração para alternativas do sistema
+Packagesearch - pesquisa e informações de pacotes
+
+Fontes
+
+Birdfont, Fontforge - Editor de fontes
+Fontmanager - gerenciador de fontes
+
+Gráficos
+
+dia e dia shapes - diagramas
+VSCode
+huguin - fotos panorâmicas
+Kcolorchooser
+OBS-studio, Kdenlive, Kino, Gopshop - editor de vídeos
+Editores de imagens: Kolourpaint, Pinta, MyPaint, Tuxpaint, Krita, Gimp, Inkscape, Mtpaint
+Darktable - mesa de luz e sala escura virtual para fotógrafos
+Shotwell, Kphotoalbum - organizador de fotos
+Kcolorchooser, Gpick - color picker
+Xchm, Kchmviewer - visualizador de arquivos CHM de help do windows
+Librecad - CAD para linux
+Kruler - Régua na tela
+Mythtv - gravador de vídeo (client e server)
+Tupi - Ferramenta de criação de animações 2D
+Hasciicam - vídeos como texto?
+Qelectrotech - Editor de esquemas elétricos
+
+Internet
+
+Firefox, Chromiun, Google Chrome, Opera, Midori, Epiphany
+Filezilla, Gftp - transferência segura de arquivos entre desktop e servidor
+Pidgin - Cliente gráfico para diversos messengers
+Kopete - instant messenger
+Transmission - baixar torrents
+Wireshark - análise do tráfico da rede
+Putty - Cliente de SSH
+Uget - gerenciador de downloads
+WhatsApp
+Quiterss - News feed
+Krdc - cliente para desktop remoto
+Google Earth
+Httrach, Httraqt - Copiar sites para o desktop para navegação em off
+Owncloud-client - sincronização com o servidor do ownCloud
+Skype
+Gtk-gnutella - compartilhar arquivos via peer to peer pela rede
+
+Jogos
+
+Wine, Payonlinux
+Frozen-bubble - estoure as bolhas (o único jogo que jogo as vezes)
+Pingus - clone do lemmings
+
+Raciocínio
+Gbrainy - jogo de quebra cabeças
+Einstein - inspirado no enigma de Einstein
+Minetest - caixa de areia em blocos
+Gnome-tetravex - Combinar azulejos
+
+Pychess. Gnome-chess, Xboard, Chessx - jogo de xadrez
+Minecraft
+Asciijump - com arte ascii
+Hatari - emulador do atari
+Steam
+E muitos outros
+
+Multimidia
+
+VLC - player multimidia com muitos recursos
+Smplayer, Mplayer, Mpv, Xplayer - player de áudio/vídeo
+Audacity, Rosegarden, Sweep - Editor de áudio multiplataforma
+Cheese - Capturar fotos e vídeo da webcam
+Spotfy
+Multitube, Smtube - Navegador de vídeos do Youtube
+Kazam, Vokoscreen, Simplescreenrecorder - Filamr o desktop com áudio
+Tuxguitar, Nted - editor de tableturas para violão e guitarra
+Aegisub - editor de legendas
+Photofilmstrip - Criador de slides show
+Hidrogen-drumkits
+Espeak - Sintetizador de voz multi-idioma
+
+Flatpak
+
+Telegram
+Gimp
+Discord
+Video Downloader
+
+Editores de vídeo:
+Kdenlive
+Shotcut
+Olive
+
+Krita
+Postman
+Visual Studio Code
+Remmina - cliente de desktop remoto
+Minitube
+Peek - gravador de telaque gera gif animado
+WPS Office
+Spotify
+Slack
+OpenTodolist
+Avidemux
+Retroarch
+Vorta - backup
+Calibre -c riação de ebook
+VueScan - mais de 6000 scanners
+Snes9x - emulador de super nintendo
+Freetube
+GnuCash - Gerenciamento de finanças, contas e investimentos
+Tor
+Master PDF Editor
+Flameshot - screenshots
+Onlyoffice Desktop Editors
+OpenShot
+Marker - markdown
+Minder
+Android Studio
+IntelliJ IDEA Community
+Scribus
+Gnome Mapas - mapa do mundo
+Tarefas - gerenciador de tarefas
+Jitsi Meet - Vídeo conferência
+Kolourpaint
+OpenBoard - quadro branco para escolas
+EasySSH
+Itopia Remote Desktop Client
+Draw.io - criar e compartilhar diagramas
+Unity HUB
+Warpinator - compartilhar arquivos pela rede
+RedNotebook - diário e jornal
+Arduino IDE
+Sequeler - cliente SQL
+Spice-up - criar apresentações
+WebStorm - IDE para JS
+Pixelorama - Editor de sprites 2D com suporte a animação
+Sweet Home 3D
+VSCodium
+Scratch
+DBeaver Community - Universal database manager
+
+Qelectrotek
+Calibre - editor de ebooks
+Shutter - Captura de tela com muitos recursos
+Scribus
+vlc - player de multimídia com muitos e bosn recursos
+Gimp - Editor de imagens que é o mais perto do Photoshop para linux
+Inkscape - Desenho vetorial, como o Corel
+audacity - editor de áudio
+Aa3d - arte ascii e Ansilove
+Blender - Modelagem e renderização 3D
+
+
+Wine
+Synaptic
+Terminator - terminal que divide a janela na vert e hor
+Gufw
+USB-creator-gtk
+USB-creator-kde
+Boot-repair
+Packagesearch - pesquisar pacotes e infos
+
+Firefox
+Opera
+Filezilla
+Pidgin
+TRansmission
+Wireshark
+Putty
+Uget
+Midori - navegador leve e rápdo
+WhatsApp
+Krdc - Cliente de conexão remota do desktop
+Google Earth
+Httrach
+Owncloud-client
+Google-chrome
+Skype
+Gtk-gnutella - compartilhar arquivos
+Httraqt
+Kimagemapeditor
+
+Jogos
+
+Frozenbubble
+Steam
+Gnome-sudoku    
+Tuxtype
+Tuxmath
+Minecraft
+Gnome-chess
+Flight-of-the-amazon-queen
+Einstein
+Xboard
+Asciijump
+
+Multimídia
+
+Cheese
+Kazam
+Vokoscreen
+Simplescreenresord
+Tuxguitar
+Kino
+Pitivi
+Nted - editor de partituras
+Timidity-daemon
+Espeak - sistetizador de voz
+
+
+    
+Preferidos
+
+
+Xed - meu editor de texto puro/código preferido. Pela sua leveza. Para mais recursos uso o VSCode
+VSCode - Muitos e bons recursos. Similar as IDEs Eclipse e Netbeans, mas muito mais leve e com uma infinidade de extensões
+LibreOffice - Pesado mas bom, para trabalhos mais elaboraos
+Firefox - Meu navegador rpeferido. Acabo de instalar o Edge para sites que são compatíveis somente com ele
+Postman - Preferido para APIs
+Apache, PHP e PostgreSQL
+CakePHP
+Joomla
+Virtualbox
+Vagrant
+Github
+Docker
+SO - Linux
+Distros Server - Alpine, Debian e Ubuntu
+Distro Desktop - Linux Mint
+Capturador de telas - Shutter ou gnome-screenshot --interactive
+Editor de imagens - Koourpaint
+Gravar desktop - Kazam
+SearchMonkey
+
+Recursos do navegador
+- Ferramentas 
+    - Ferramentas do navegador 
+        - Fefrramentas de desenvolvimento web (Inspetor) - Muito recurso útil
+        - Design responsivo
+        - Seletor de cores (mover o cursos. Esc para)
+        - Código fonte da página (Ctrl+U)
+        - Depuração remota
+
+
+Extensões para Firefox
+- ColorZilla
+- MeasureIt
+- Video DownloadHelper
+- NoScript (usar com moderação)
+- Web Developer
+
+Sugestão: caso não tenha encontrado algum programa nesta relação para uma específica atividade sugiro que instale o Linux Mint última versão e verifique sua lista de softwares disponíveis para instalação pelo modo gráfico (pois a lista acima não é completa). Existem também outras distribuições linux que trazem uma enorme lsita de programas para instalação: Debian, Deepin, etc.
+

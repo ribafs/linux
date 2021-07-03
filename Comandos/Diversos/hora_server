@@ -1,0 +1,21 @@
+Configurar Hora em Servidor Debian e derivados
+
+Servidor NTP
+sudo apt-get install ntp
+
+GMT
+sudo dpkg-reconfigure tzdata
+
+date
+
+
+CentOS 7
+
+timedatectl list-timezones
+
+timedatectl set-timezone America/Fortaleza
+
+Mostrar a atual
+timedatectl
+
+date

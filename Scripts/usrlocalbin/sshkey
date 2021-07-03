@@ -1,0 +1,4 @@
+cd /home/ribafs
+ssh-keygen -t rsa -b 4096 -C "ribafs@gmail.com"
+clear
+cat ~/.ssh/id_rsa.pub

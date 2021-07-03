@@ -1,0 +1,27 @@
+CAse KNUP com HD sata de 1TB
+
+Após o boot desmontar no desktop as unidades montadas
+
+Instalar o Mint
+Caso instale customizado crie
+/boot - 1GB
+/efi - 40MB
+
+Use boot legacy e desabilite Boot Security
+
+Pode usar
+CASE + pendrive com instalador
+CASE + outro case com SO
+
+
+Ideal instalar o mint em pendrive e então instalar num HD sata ou SSD
+
+===========
+Ao criar a imagem no pendrive selecione GPT e UEFI para que quando for instalar o SO ou usar o case deixe o micro com boot pelo UEFI.
+Ficando assim como padrão nem precisa teclar F12 na logo pois assumirá o default, que é UEFI.
+
+Assim basta inserir no case o DH que tudo funcionará.
+
+Em caso de cases mais sofisticados evite estar tocando nos cabos, pois poderá desligar tudo e precisará desligar na marra.
+
+

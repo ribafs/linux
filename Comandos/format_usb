@@ -1,0 +1,9 @@
+Para instalar o USB Stick Formatter (Formatador de Pendrive) e o USB Image Writer (Gravador de Imagem USB) no Debian 9 Stretch 64 bits, abra um terminal e insira os seguintes comandos:
+
+wget http://packages.linuxmint.com/pool/main/m/mintstick/mintstick_1.3.4_all.deb
+$ sudo apt install gdebi
+$ sudo gdebi mintstick_1.3.4_all.deb
+
+Para acessar os programas vá em: Aplicativos >> Acessórios >> Formatador de Pendrive / Gravador de Imagem USB 
+
+Check out Gparted ( http://gparted.sourceforge.net/ ). You can download it from the repositories. 

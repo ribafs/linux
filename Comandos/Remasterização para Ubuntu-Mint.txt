@@ -1,0 +1,167 @@
+Remasterização para Ubuntu ou Mint
+
+
+Útil para guardar um backup customizado do sistema operacional, para levar para outro computador, num curso, palestra, etc.
+
+Com estes passos, criamos um ambiente isolado com a iso baixada e onde podemos instalar novos pacotes e remover os desejados e assim criar uma iso customizada a gosto. Esta forma também é mais flexível que usando o Remastersys, pois podemos criar a ISO enquanto trabalhamos.
+
+Nos passos abaixo apenas estou querendo customizar adicionando os softwares que geralmente instalo após a instalação do Linux. Quem estiver interessado em customizaar o sistema do Linux, seu desktop, etc deve então ler a texto original em:
+http://www.915tx.com/remaster/
+
+Google+ do autor https://plus.google.com/+PeteNavarro/posts, onde deseja receber comentários.
+
+Existia um bom programa que fazia isso (Remastersys) com simplicidade mas foi descontinuado e os que existem são instáveis.
+
+Explicação detalhada de cada comando:
+https://forums.linuxmint.com/viewtopic.php?f=42&t=107350
+
+Nota: alguns comandos ocupam mais de uma linha. Cuidado, sempre execute o comando completo.
+
+
+Instalação dos softwares necessários:
+
+sudo apt-get install squashfs-tools genisoimage resolvconf
+
+Baixar a iso do Ubuntu ou do Mint:
+http://www.ubuntu.com/download
+http://www.linuxmint.com/download.php
+
+Mover a iso baixada para sua pasta /home/usuario
+
+
+Configurando e Criando a ISO customizada
+
+Abra o terminal e digite ou copie/cole:
+
+mkdir ~/livecdtmp
+
+cd ~/livecdtmp
+
+mkdir extract-cd mnt
+
+sudo mount -o loop ~/INSIRA_SUA_ISO_AQUI.iso mnt
+
+sudo rsync --exclude=/casper/filesystem.squashfs -a mnt/ extract-cd
+
+sudo unsquashfs mnt/casper/filesystem.squashfs
+Aguarde...
+
+sudo mv squashfs-root edit
+
+sudo cp /etc/resolv.conf edit/etc/
+
+sudo mount --bind /dev/ edit/dev
+
+Entrar no ambiente chroot:
+sudo chroot edit
+
+mount -t proc none /proc && mount -t sysfs none /sys && mount -t devpts none /dev/pts
+
+export HOME=/root && export LC_ALL=C
+
+cd /etc/skel
+
+mkdir Desktop Documents Downloads Music Pictures Public Templates Videos
+
+cd /
+
+
+Seu projeto está pronto para as alterações, adicionando e removendo softwares.
+
+Eu basicamente executei o seguinte:
+
+apt update
+apt upgrade
+exit
+sudo reboot
+
+Após voltar executei:
+cd livecdtmp
+
+sudo mount --bind /dev/ edit/dev
+
+sudo chroot edit
+
+mount -t proc none /proc && mount -t sysfs none /sys && mount -t devpts none /dev/pts
+
+No tutorial original existem sugestões de configurar o sistema, personalizar o desktop entre outras.
+
+apt-get clean
+
+apt-get autoremove
+
+rm -rf /tmp/* ~/.bash_history
+
+Agora eu instalei tudo que geralmente instalo após instalar do zero (altere a gosto):
+
+apt-get -y install aptitude ntp ntpdate git samba
+apt-get -y install apache2 libapache2-mod-php7.0
+a2enmod rewrite
+apt-get -y install postgresql postgresql-contrib mysql-server sqlite3
+apt-get -y install php7.0-bcmath php7.0 mcrypt php7.0-mcrypt php7.0-gd php7.0-mysql php7.0-sqlite3 php7.0-pgsql php7.0-ldap
+apt-get -y install php7.0-mcrypt php-pear php7.0-xsl curl php7.0-curl phpunit php-xdebug php7.0-intl composer
+apt-get -y install php7.0-zip php7.0-mbstring php-gettext php-mbstring php7.0-fpm php-auth phpmyadmin
+apt-get install php-curl php-mcrypt php-gd
+phpenmod mbstring
+apt-get -y install php-apcu
+wget http://ftp.ussg.iu.edu/linux/ubuntu/pool/main/m/memcached/memcached_1.4.25-2ubuntu1_amd64.deb
+dpkg -i memcached_1.4.25-2ubuntu1_amd64.deb
+apt-get -y install php-memcache
+apt-get -y install msttcorefonts
+apt-get -y install rar unrar zip unzip p7zip-full aptitude ubuntu-restricted-extras k3b kolourpaint4 gnome-search-tool
+#Instalar Java
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+#Módulo de Segurança para o Banco do Brasil
+sudo apt-get install libnss3-tools libcurl3
+wget https://cloud.gastecnologia.com.br/bb/downloads/ws/warsaw_setup64.deb -O warsaw.deb
+sudo dpkg -i warsaw.deb
+rm warsaw.deb
+apt-get -y update
+apt-get -y upgrade
+
+Sair do ambiente chroot
+
+umount /proc
+
+umount /sys
+
+umount /dev/pts
+
+exit
+
+sudo umount edit/dev
+
+
+== Agora vamos construir a ISO ou volte e faça alterações.
+Idealmente reinicie seu computador agora, especialmente se tiver pouca RAM (<= 4GB).
+
+sudo rm ~/livecdtmp/extract-cd/casper/filesystem.squashfs (somente se reconstruindo um projeto)
+
+cd livecdtmp
+
+sudo mksquashfs edit extract-cd/casper/filesystem.squashfs
+Aguarde...
+
+sudo nano extract-cd/README.diskdefines
+
+cd extract-cd
+
+find -type f -print0 | sudo xargs -0 md5sum | grep -v isolinux/boot.cat | sudo tee md5sum.txt
+
+cd ..
+
+sudo mkisofs -r -V "REMASTER" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../REMASTER.iso extract-cd
+
+cd ..
+
+sudo chmod 777 REMASTER.iso
+
+
+Está pronto para testar.
+Para isso criei uma VM no VirtualBox com praticamente tudo default, exceto no HD que mudei para 20GB, pois exige mais que os 10 reservados por default pelo VirtualBox. A VM foi criada com sucesso e tudo correu bem. Testei todos os softwares que instalei e estavam lá: apache, php, mysql, etc.
+
+Referência
+http://www.915tx.com/remaster/
+

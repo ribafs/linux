@@ -1,0 +1,61 @@
+Debian/Ubuntu
+
+Após a instalação do Apache
+
+adduser ribafs www-data
+
+===Setando Permissões
+
+Para trabalho em equipe no servidor
+
+Criar um grupo
+addgroup webdevel
+
+Adicionar cada um dos integrantes da equipe ao grupo webdevel
+addgroup ribafs webdevel
+
+sudo clear;
+echo "Aguarde enquanto configuro as permissões do /var/www/html/$1";
+echo "";
+chown -R www-data:webdevel /var/www/html/$1;
+chgrp -R webdevel /var/www/html/$1
+find /var/www/html/$1 -type d -exec chmod 2775 {} ;
+find /var/www/html/$1 -type f -exec chmod 2664 {} ;
+if [-d "/var/www/html/$1/bin"]
+	then
+	chmod +x /var/www/html/$1/bin/cake
+fi	
+echo "";
+echo "Concluído!";
+
+nano /usr/local/bin/perms;
+chmod +x /usr/local/bin/perms;;
+
+
+=== RedHat/CentOS
+
+Antes instalar o Apache
+
+addgroup webdevel
+usermod -a -G webdevel apache
+usermod -a -G webdevel ribafs
+
+=== Usando Permissões
+
+sudo clear;
+echo "Aguarde enquanto configuro as permissões do /var/www/html/$1";
+echo "";
+chown -R apache:webdevel /var/www/html/$1;
+chgrp -R webdevel /var/www/html/$1
+find /var/www/html/$1 -type d -exec chmod 2775 {} ;
+find /var/www/html/$1 -type f -exec chmod 2664 {} ;
+if [-d "/var/www/html/$1/bin"]
+	then
+	chmod +x /var/www/html/$1/bin/cake
+fi	
+echo "";
+echo "Concluído!";
+
+nano /usr/local/bin/perms;
+chmod +x /usr/local/bin/perms;;
+

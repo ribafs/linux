@@ -1,0 +1,21 @@
+$ journalctl -f -l Show and keep open (-f) the system log, allowing you to see new messages scrolling by. The -l flag prevents truncating of long
+lines.
+$ journalctl -f -l -u httpd -u mariadb Same as above, but only for log messages from the httpd and mariadb services.
+$ journalctl -f -l -u httpd -u mariadb --since -300 Same as above, only for log messages that are less than 300 seconds (5 minutes) old
+
+nmcli d Show the status of all network interfaces
+nmcli d show eth0 Show details of network interface eth0; alternatively you can use ‘ip a s eth0’
+nmcli d connect eth0 Bring up the network interface eth0. You can use ‘disconnect’ to bring the interface down.
+
+curl http://www.someapp.org/test.php
+curl http://10.0.0.10/test.php Use the ‘curl’ command to perform a download of the test.php file at www. someapp.org or 10.0.0.10, respectively
+curl http://localhost:80/someapp/api -v Fetch sent and received HTTP GET status, API response payload from the local host
+curl https://localhost:443/someapp/ api -v -F “arg1=foo” -F “arg2=bar” Fetch sent and received HTTPS POST status, API response payload from the local host
+
+chmod g+s /var/www/html Special command to make sure that all files created in /var/www/html are owned by the group that own /var/www/html; it sets to so-called sticky bit - https://en.wikipedia.org/wiki/Sticky_bit
+
+
+Remover PPA (inserir -r)
+
+sudo add-apt-repository -r ppa:paulo-miguel-dias/pkppa
+

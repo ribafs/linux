@@ -1,0 +1,65 @@
+Estrutura de diretórios do Linux
+
+/ - raiz
+    /bin - binários executáveis dos usuários. Exemplos: ps, ls, ping, grep, cp
+    /sbin - binários executáveis do sistems. Exemplos: iptables, reboot, fdisk, ifconfig, swapon
+    /etc - arquivos de configuração. Exemplos: php.ini, apache2.conf
+    /dev - arquivos de dispositivos. Exemplos: /dev/tty1, /dev/usbmon0
+    /proc - informações sobre processos. Exemplos: cpuinfo, meminfo
+    /var - arquivos variáveis. Exemplos: /var/mail, /var/log, var/www
+    /tmp - arquivos temporários
+    /usr - programas dos usuários. Exemplos: at, awk, cc, less, scp
+    /home - diretório home dos usuários. Exemplo: /home/ribafs
+    /boot - arquivos de carga do boot. Exemplos: initrd.img-2.6.32-24-generic, vmlinuz-2.6.32-24-generic
+    /lib - bibliotecas do sistema. Exemplos: ld-2.11.1.so, libncurses.so.5.7
+    /opt - aplicativos opcionais adicionais.
+    /mnt - diretório de montagem
+    /media - dispositivos removíveis. Exemplos: /medica/cdrom for CD-ROM
+    /srv - dados de serviço. Exemplo: /srv/cvs
+
+/ - raiz - somente o root pode escrever neste diretório
+
+
+Estrutura de diretórios do FreeBSD
+
+/bin
+/boot
+/dev
+/entropy
+/etc
+/home
+/lib
+/libexec
+/media
+/mnt
+/net
+/proc
+/rescue
+/root
+/sbin
+/sys
+/tmp
+/usr
+/var
+/zroot
+
+Estrutura de diretórios do OpenBSD
+
+/altroot
+/bin
+/boot
+/bsd
+/dev
+/etc
+/home
+/mnt
+/root
+/sbin
+/sys
+/tmp
+/usr
+/var
+
+Referências
+https://sempreupdate.com.br/2-administracao-de-sistemas-linux-diretorios/
+

@@ -1,0 +1,85 @@
+Corrigindo o erro
+The user specified as a definer ('mysql.infoschema'@'localhost') does not exist
+
+mysql -uroot
+use mysql;
+
+select User, plugin, authentication_string from mysql.user where user like 'mysql.%';
+
+update mysql.user set plugin = 'caching_sha2_password' where User = 'mysql.infoschema';
+update mysql.user set plugin = 'caching_sha2_password' where User = 'mysql.session';
+
+sudo service mysql restart
+
+mysql -uroot
+show databases;
+
+Truncar todas as tabelas de um banco (remover seus registros), pela linha de comando
+
+mysql -uroot -Nse 'show tables' acl | while read table; do mysql -uroot -e "SET FOREIGN_KEY_CHECKS = 0;truncate table $table;SET FOREIGN_KEY_CHECKS = 1;" acl; done
+
+
+Remover MySQL
+
+Uninstall or Completely remove mysql from ubuntu 16-04
+
+    While upgrading from ubuntu 16.04.1 to ubuntu 16.04.03, we had face once issue that we unexpected.
+
+    This incident are cause by mysql server update, while setting up the mysql by apt, its hang on the server and will not work for leaving it around one hours.
+
+    So we decide to remove the mysql server and reinstall again, below are the step that we were done.
+
+    sudo apt-get remove --purge mysql*
+
+    sudo apt-get purge mysql*
+
+    sudo apt-get autoremove
+
+    sudo apt-get autoclean
+
+    sudo apt-get remove dbconfig-mysql
+
+    sudo apt-get dist-upgrade
+
+    sudo apt-get install mysql-server
+
+if still not working for you, please check any mysql process running on your server, it can be view by using top command and service mysql stop, otherwise try step3 before going through step 1 and 2.
+
+
+Para usar o adminer com mysql e o root sem senha
+
+Baixar o source code de adminer.org
+
+Descompactar e copiar para o diretório web
+
+Editar o arquivo
+
+adminer/index.php
+
+Adicionar ao início assim:
+
+<?php
+/** Adminer - Compact database management
+* @link https://www.adminer.org/
+* @author Jakub Vrana, https://www.vrana.cz/
+* @copyright 2007 Jakub Vrana
+* @license https://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
+* @license https://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2 (one or other)
+*/
+
+include "./include/bootstrap.inc.php";
+include "./include/tmpfile.inc.php";
+
+$enum_length = "'(?:''|[^'\\\\]|\\\\.)*'";
+$inout = "IN|OUT|INOUT";
+
+function adminer_object() {
+	include_once "../plugins//plugin.php";
+	include_once "../plugins/login-password-less.php";
+	return new AdminerPlugin(array(
+		// TODO: inline the result of password_hash() so that the password is not visible in source codes
+		new AdminerLoginPasswordLess(password_hash("root", PASSWORD_DEFAULT)),
+	));
+}
+
+// Restante do index.php. No caso estou usando uma senha apenas para o adminer, como 'root'. Verifique o path dos dois plugins.

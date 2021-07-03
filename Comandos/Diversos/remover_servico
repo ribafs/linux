@@ -1,0 +1,10 @@
+Remover serviço de um Debian/Ubuntu e cia
+
+service apache2 stop
+update-rc.d -f apache2 remove
+apt-get remove apache2
+
+service sendmail stop
+update-rc.d -f sendmail remove
+
+

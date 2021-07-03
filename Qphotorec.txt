@@ -1,0 +1,136 @@
+Recuperação de dados com QPhotorec ( testdisk ) no Linux
+
+O Qphotorec é uma GUI em Qt para o testdisk/photorec a melhor ferramenta de recuperação de dados no mundo Linux, confira nessa matéria como instalar na sua distribuição Linux.
+
+Recomendações:
+
+    Ao deletar seus dados por acidente ou em uma formatação do disco, pare tudo o que está fazendo no disco para não correr o risco de subscrever esses dados perdidos.
+
+    Para realizar a recuperação dos dados você precisa de um segundo disco ( HD, SSD, unidade removível, HD externo ) de tamanho igual ou maior que o que contêm os dados perdidos.
+    
+TestDisk
+
+
+TestDisk verifica a partição e setores de inicialização de seus discos. É muito útil para recuperar partições e dados perdidos por linha de comando.
+
+
+Trabalha com os sistemas de arquivos.
+
+    DOS/Windows FAT12, FAT16 and FAT32
+    NTFS ( Windows NT/2K/XP )
+    Linux Ext2 and Ext3
+    BeFS ( BeOS )
+    BSD disklabel ( FreeBSD/OpenBSD/NetBSD )
+    CramFS (Compressed File System)
+    HFS and HFS+, Hierarchical File System
+    JFS, IBM's Journaled File System
+    Linux Raid
+    Linux Swap (versions 1 and 2)
+    LVM and LVM2, Linux Logical Volume Manager
+    Netware NSS
+    ReiserFS 3.5, 3.6 and 4
+    Sun Solaris i386 disklabel
+    UFS and UFS2 (Sun/BSD/...)
+    XFS, SGI's Journaled File System
+    
+PhotoRec
+
+ 
+
+PhotoRec é um software de recuperação de dados projetado para recuperar fotos perdidas da memória da câmera digital ou mesmo de discos rígidos por linha de comando. Ele foi estendido para pesquisar também cabeçalhos que não sejam de áudio / vídeo.
+
+Procura por:
+
+ 
+
+    Sun/NeXT audio data (.au)
+    RIFF audio/video (.avi/.wav)
+    BMP bitmap (.bmp)
+    bzip2 compressed data (.bz2)
+    Source code written in C (.c)
+    Canon Raw picture (.crw)
+    Canon catalog (.ctg)
+    FAT subdirectory
+    Microsoft Office Document (.doc)
+    Nikon dsc (.dsc)
+    HTML page (.html)
+    JPEG picture (.jpg)
+    MOV video (.mov)
+    MP3 audio (MPEG ADTS, layer III, v1) (.mp3)
+    Moving Picture Experts Group video (.mpg)
+    Minolta Raw picture (.mrw)
+    Olympus Raw Format picture (.orf)
+    Portable Document Format (.pdf)
+    Perl script (.pl)
+    Portable Network Graphics (.png)
+    Raw Fujifilm picture (.raf)
+    Contax picture (.raw)
+    Rollei picture (.rdc)
+    Rich Text Format (.rtf)
+    Shell script (.sh)
+    Tar archive (.tar )
+    Tag Image File Format (.tiff)
+    Microsoft ASF (.wma)
+    Sigma/Foveon X3 raw picture (.x3f)
+    zip archive (.zip)
+    
+QPhotoRec
+
+O QPhotoRec é uma interface gráfica para o PhotoRec, tendo todas as suas funcionalidades em uma GUI escrita em Qt.
+
+Ao clicar em "Formato de arquivos" sera exibida uma extensa lista das extensões que você pode recuperar com o APP.
+
+
+Exemplo de recuperação
+
+Em um pendrive adicionei 3 imagens que posteriormente deletei e limpei a lixeira. Irei usar pendrive no exemplo mas o mesmo se aplica a discos HD e SSD.
+
+No QPhotoRec selecionei o Pen 1 com os dados perdidos e como destino dos dados recuperados o Pen 2.
+
+Click em "Pesquisar" e aguarde ...
+
+Ao final é exibido o total de arquivos recuperados e as extensões encontradas.
+
+Basta abrir o disco de destino e os dados estão salvos nele.
+
+Note as 3 imagens do teste estão recuperadas além de vários outros arquivos de formatações passadas do meu pendrive, note também que os arquivos são recuperados mas sem os seus nomes antigos, mas isso é só um detalhe, o mais importante são os dados e nomes você renomeia.
+
+
+Instalação
+
+A instalação é por compilação, siga os passos com atenção e calma.
+
+Antes de instalar adicione seu usuário ao grupo disk com o comando no terminal.
+
+sudo adduser $USER disk
+    
+Compilação
+
+Instale as dependências para a sua distribuição Linux com o comando correspondente.
+
+Debian/Ubuntu: 
+
+sudo apt-get install build-essential e2fslibs-dev libncurses5-dev libncursesw5-dev ntfs-3g-dev libjpeg-dev uuid-dev zlib1g-dev qtbase5-dev qttools5-dev-tools pkg-config dh-autoreconf git
+    
+git clone https://github.com/cgsecurity/testdisk.git
+cd ~/testdisk
+mkdir config
+autoreconf --install -W all -I config
+./configure
+make
+sudo make install
+
+Executar
+
+sudo qphotorec
+
+Indicar uma pasta para receber os arquivos recuperados.
+
+Ao final os arquivos recuperados estarão na pasta acima.
+
+Referência
+
+Este resumo foi tirado do artigo, com mais detalhes, em:
+
+https://linuxdicasesuporte.blogspot.com/2021/02/recuperacao-de-dados-com-qphotorec.html
+

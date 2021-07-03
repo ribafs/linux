@@ -1,0 +1,22 @@
+Proteção do Roteador no Desktop
+
+Precisamos mudar a senha default do roteador e usar uma senha forte.
+
+Acesse a administração web do roteador com o IP fornecido juntamente com login e senha.
+
+Também precisamos evitar o uuso de roteadores conhecidos como de baixa qualidade.
+
+Usar uma segurança mais forte como a WPA2.
+
+Desligar o WPS do roteador.
+
+O antivirus Avast tem uma ferramenta que verifica o roteador e mostra algumas dicar para melhorar a segurança:
+
+- Abrir o Avast
+- Proteção do lado esquerdo
+- Verificador de Wi-Fi
+- Clicar no botão Escanear Rede
+
+Para melhorar a segurança visite:
+
+https://help.avast.com/pt/av_free/17/securitynetwork.html

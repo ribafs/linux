@@ -1,0 +1,5 @@
+grep CRON /var/log/syslog
+
+service rsyslog restart
+
+grep -i cron /var/log/syslog|tail -2

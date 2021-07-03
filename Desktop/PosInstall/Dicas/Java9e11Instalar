@@ -1,0 +1,59 @@
+Instalar Java 9 da Oracle num Ubuntu
+
+sudo apt remove --purge openjdk-*
+sudo add-apt-repository ppa:webupd8team/java 
+sudo apt-get update 
+sudo apt-get install oracle-java8-installer
+
+
+== Instalar o Java 11
+
+http://www.oracle.com/technetwork/java/javase/downloads/index.html
+
+JDK
+Baixar deb
+
+Instalar com
+
+sudo apt remove --purge openjdk-*
+sudo dpkg -i jdk-11.0.1_linux-x64_bin.deb
+
+Teste
+java -version
+javac --version
+
+Adicionar ao path, caso não esteja
+
+Criar o arquivo
+
+/etc/profile.d/jdk11.sh
+
+sudo nano /etc/profile.d/jdk11.sh
+
+Adicione
+
+export JAVA_HOME="INSTALL_DIR/JDK_DIR"
+export PATH="$PATH:${JAVA_HOME}/bin"
+
+Teste
+echo $JAVA_HOME
+javac --version
+
+echo $PATH | grep jdk
+
+Criar e compilar um pequeno programa
+
+nano Teste.java
+
+public class Teste {
+    public static void main(String[] args) {
+        System.out.println("Olá mundo do LinuxHint!");
+    }
+}
+
+javac Teste.java
+
+java Teste
+
+https://linuxhint.com/install_oracle_jdk_linux_mint_19/
+

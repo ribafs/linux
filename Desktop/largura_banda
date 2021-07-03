@@ -1,0 +1,12 @@
+Excelente software open source para monitorar a largura de banda de uma rede, testado e aprovado! O software se chama: SPEEDOMETER, para quem usa alguma distribuição Linux baseada em DEBIAN, segue o processo de instalação & configuração:
+
+# Instalação:
+apt-get update && apt-get install speedometer
+
+# Verifica a interface à ser monitorada:
+ip a
+
+# Sobre o resultado do comando anterior, no meu caso vou monitorar a interface Ethernet: enp2s0
+
+# Comando do software: Speedo Meter
+speedometer -r enp2s0 -t enp2s0

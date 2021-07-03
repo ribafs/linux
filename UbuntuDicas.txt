@@ -1,0 +1,171 @@
+Dicas sobre o Ubuntu Server
+
+Gerenciando Grupos de Pacotes
+
+Após a instalação é confortável usar:
+
+tasksel
+
+Para remover ou instalar grupos de pacotes.
+
+Configurar fusos horários:
+dpkg-reconfigure tzdata
+
+
+Comandos:
+
+Desligar: poweroff, halt ou shutdown -h now
+
+Reiniciar: 
+
+CT+AL+Del
+shutdown -r now
+reboot
+
+
+Criar arquivo com listagem dos arquivos modificados nos últimos 4 dias:
+find /var/log -mtime +4 > /tmp/mod4dias
+
+
+Adicionar um serviço ao boot
+update-rc.d firewall defaults
+
+Remover serviço do boot
+update-rc.d -f firewall
+
+
+
+Diretórios
+
+Directory 	Content
+bin 	Essential command binaries
+boot 	Static files of the boot loader
+dev 	Device files
+etc 	Host-specific system configuration
+home 	User home directories
+lib 	Essential shared libraries and kernel modules
+media 	Contains mount points for replaceable media
+mnt 	Mount point for mounting a file system temporarily
+proc 	Virtual directory for system information (2.4 and 2.6 kernels)
+root 	Home directory for the root user
+sbin 	Essential system binaries
+sys 	Virtual directory for system information (2.6 kernels)
+tmp 	Temporary files
+usr 	Secondary hierarchy
+var 	Variable data
+srv 	Data for services provided by the system
+opt 	Add-on application software packages
+
+
+Programas para trabalhar com partições:
+
+fdisk
+cfdisk
+parted
+partman
+gparted
+
+Espaço Necessário para alguns Serviços/Tarefas
+
+Task 				Installed size (MB) 	Download size (MB) 	Space needed to install (MB)
+Desktop environment 	  	  	 
+  • GNOME (default) 1830 					703 				2533
+  • KDE 			1592 					613 				2205
+  • Xfce 			1056 					403 				1459
+  • LXDE 			963 					370 				1333
+Laptop[a] 			26 						9 					35
+Web server 			42 						13 					55
+Print server 		215 					84 					299
+DNS server 			3 						1 					4
+File server 		74 						29 					103
+Mail server 		14 						5 					19
+SQL database 		50 						18 					68
+
+
+Recuperar MBR
+
+sudo apt-get install lilo
+sudo lilo -M /dev/sda mbr
+
+Sincronizar relógio
+ntpdate -u pool.ntp.br
+
+dpkg-reconfigure nomecomando
+
+whereis comando (encontra binário, man page e source)
+which comando (encontra binário)
+
+
+Atualizar Ubuntu Server para uma nova versão
+do-release-upgrade
+
+
+#Script para renomear vários arquivos de uma vez.
+#Por José Henrique
+#!/bin/sh
+for f in *.php
+do
+	#Troca o sufixo .php pelo .html
+	newname=$(basename $f php)html
+
+	#Renomeia
+	mv $f $newname
+done
+
+Gerando uma iso de um CD ou DVD
+dd if=/dev/cdrom of=imagem.iso
+
+
+Montar imagem ISO
+mount /[caminho ou diretório]/[nome da imagem].iso /[caminho ou diretório onde será montado a imagem] -o loop
+mount /media/dvdrom/imagem.iso imagemdir -o loop
+
+
+traceroute
+tracert
+mtr
+
+mtr -i5 www.dnocs.gov.br
+
+mtr -r -c 10 www.dnocs.gov.br
+
+
+Quebrando a senha do root
+
+Em casos de perda da senha do root e em outros casos em que precisamos quebrar a senha do root, precisaremos geralmente de um Live CD com um Linux.
+
+Efetuar o boot 
+Ao final acessar um terminal e executar:
+
+Para visualizar as partições do HD:
+fdisk -l
+
+Criar um diretório temporário (acima anote quem é a partição raiz, por exemplo sda1):
+mkdir teste
+
+Montar a raiz em teste:
+mount /mnt/sda1 teste
+Acessar o diretório /etc:
+cd teste/etc
+
+nano passwd
+
+A primeira linha está mais ou menos assim:
+root:x:0:0:root:/root:/bin/bash
+
+Altere removendo apenas o “x”:
+root::0:0:root:/root:/bin/bash
+
+Salve e saia com CTRL+O e CTRL+X
+
+Agora desmonte a partição:
+umount /dev/sda1
+
+Reinicie 
+
+Agora poderá acessar o root sem senha. Apenas entre com root para o usuário e quando solicitar a senha apenas tecle Enter.
+
+Execute o comando abaixo logo após o login e tecle enter e adicionar uma senha para o root:
+passwd root
+
+

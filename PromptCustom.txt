@@ -1,0 +1,31 @@
+Default do Mint 20
+
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+Custom
+
+PS1="\[\e[33mNb-\]\W \[\e[37m\]$ "
+
+O mais simples possível
+
+PS1="$ : "
+echo $PS1
+
+cd
+nano .bashrc
+
+
+PS1='$PWD : '
+
+
+Path cheio
+
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+Somente dir atual
+
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\W\[\033[00m\]\$ '
+
+Dir atual e em verde e sem o $ final
+
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\W\[\033[00m\] '

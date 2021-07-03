@@ -1,0 +1,51 @@
+Pos Install do Linux Mint
+
+Configurar teclas de atalho customizadas
+- firefox
+- gedit
+- libreoffice
+- neno
+- terminal
+gnome-terminal --working-directory=/backup/www
+- kolourpaint
+- shutter
+- vokoscreen
+- desligar
+
+Configurar grub para deixar Windows como default (em casa)
+sudo nano /etc/default/grub
+4
+
+sudo default-grub
+sudo reboot
+
+Firefox
+- Sincronizar Firefox
+- Customizar privacidade
+- Sem página inicial e Sempre perguntar antes de salvar
+
+Instalar apache, php, postgresql e cia via
+/backup/linux/ubuntu_desk5.sh
+
+Instalar:
+- teanviewer
+- ouwCloud
+- vagrant
+- alarm-clock-applet
+- virtualbox
+	Criar uma VM com o Windows 7 e outra com o Centos 7.5
+- Google Chrome
+- Pinguy Builder - https://sourceforge.net/projects/pinguy-os/files/ISO_Builder/
+pinguybuilder_4.3-8_all-beta.deb
+
+Instalar através dos Aplicativos:
+
+- Frozen Bubble
+- Captura de tela: Shutter
+- Gravar desktop: gtk-recordmydesktop e vokoscreen
+
+Vlc e plugins já instalados por default
+
+Alguns softwares que acompanham
+Formatador de dispositivos de memória USB
+

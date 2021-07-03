@@ -1,0 +1,16 @@
+Instalar Navegador Edge no Ubuntu
+
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
+sudo rm microsoft.gpg
+sudo apt update && sudo apt install microsoft-edge-dev
+
+A ignorar o ficheiro 'microsoft-edge-dev.list’' no directório '/etc/apt/sources.list.d/' porque tem uma extensão inválida no nome do ficheiro
+N: A ignorar o ficheiro 'microsoft-edge-dev.list’exit' no directório '/etc/apt/sources.list.d/' porque tem uma extensão inválida no nome do ficheiro
+Você quer continuar? [S/n] 
+S
+
+https://sempreupdate.com.br/como-instalar-o-navegador-microsoft-edge-no-ubuntu/
+

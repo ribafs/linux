@@ -1,0 +1,108 @@
+Batch ou arquivo de lote (também conhecidos por .bat) é um arquivo de computador utilizado para automatizar tarefas.
+
+Podemos compará-lo, a grosso modo, aos scripts do Unix.
+
+Lista de comandos
+
+    1 ATTRIB
+    2 CALL
+    3 CHDIR
+    4 CLS
+    5 COMP
+    6 COPY
+    7 DATE
+    8 DELTREE
+    9 DIR
+    10 DISKCOMP
+    11 DISKCOPY
+    12 ECHO
+    13 FIND
+    14 FOR
+    15 FORMAT
+    16 IF
+    17 LABEL
+    18 MKDIR
+    19 MODE
+    20 MORE
+    21 MOVE
+    22 PATH
+    23 PAUSE
+    24 PROMPT
+    25 RENAME
+    26 RMDIR
+    27 TREE
+    28 TIME
+    29 TITLE
+    30 TYPE
+    31 VER
+    32 EDIT
+    33 EXIT
+    34 WIN
+    35 FDISK
+
+
+Exemplos= 1
+
+Se x 
+
+@ECHO OFF
+CLS
+SET X=1
+IF "%X%" == "1" GOTO ok
+ECHO X não é igual a 1, X é igual a %X%
+GOTO saida
+:ok
+ECHO X é igual a 1
+:saida
+
+Mensagem de acordo com a idade:
+
+@ECHO OFF
+SET idade=15
+IF %idade% LSS 10 (
+   ECHO Bom dia menino!
+   ECHO.
+   ECHO Você não vai para escola?
+) ELSE (
+   IF %idade% LSS 18 (
+      ECHO Bom dia garoto!
+      ECHO.
+      ECHO Você não vai pro colégio?
+   ) ELSE (
+      IF %idade% LEQ 64 (
+         ECHO Bom dia!
+         ECHO.
+         ECHO Você não vai trabalhar hoje?
+      ) ELSE (
+         ECHO Bom dia!
+         ECHO.
+         ECHO Tudo bem?
+      )
+   )
+)
+
+
+Remover um serviço do Windows
+
+sc delete nomeserviço
+
+sc delete apache2
+
+sc delete mysql
+
+==============
+Programação para o prompt do Windows
+
+Exemplos
+
+echo off
+cls
+echo “SCRIPT .BAT para realizar backup”
+pause
+cd\docume~1\%username%\documentos
+copy| * d:\Arquivos_Backup
+pause
+echo “Abrir calculadora”
+start calc.exe
+pause
+

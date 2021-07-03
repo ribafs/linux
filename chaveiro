@@ -1,0 +1,7 @@
+sudo apt remove --purge gnome-keyring
+
+Continuar
+Continuar
+
+Reinstalar
+sudo apt-get install gnome-keyring

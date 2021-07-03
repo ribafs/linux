@@ -1,0 +1,14 @@
+# "Instalar PHP 7 e extensões. Tecle Enter para instalar!";
+apt-get -y install php7.2-bcmath php7.2 mcrypt php7.2-gd php7.2-mysql php7.2-pgsql;
+apt-get -y install php7.2-mcrypt php-pear php7.2-xml  php7.2-xsl curl php7.2-curl phpunit php-xdebug php7.2-intl composer;
+apt-get -y install php7.2-zip php7.2-mbstring php-gettext php-mbstring php7.2-fpm php7.2-sqlite3 php-redis;
+phpenmod mbstring;
+
+# "Instalar suporte a cache no PHP. Tecle Enter para instalar!";
+apt-get -y install php-apcu;
+
+wget http://ftp.ussg.iu.edu/linux/ubuntu/pool/main/m/memcached/memcached_1.4.25-2ubuntu1_amd64.deb;
+dpkg -i memcached_1.4.25-2ubuntu1_amd64.deb;
+apt-ge -f install;
+apt-get -y install php-memcache;
+

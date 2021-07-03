@@ -1,0 +1,11 @@
+Usar sudo sem senha
+Faça isso somente para um micro que utiliza em casa ou no trabalho mas se tiver privacidade
+
+sudo bash -c 'echo "$(logname) ALL=(ALL:ALL) NOPASSWD: ALL" | (EDITOR="tee -a" visudo)'
+
+Fechar o terminal e abrir novamente
+
+Testando:
+
+sudo clear
+

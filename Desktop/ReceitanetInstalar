@@ -1,0 +1,45 @@
+Instalar Receitanet
+Preparando o sistema para instalar o Receitanet no Ubuntu e deriados
+
+Se na hora de instalar ou utilizar o programa em um sistema baseado no Ubuntu de 64-bits você tiver problemas com dependências, além de instalar o Java, faça esse procedimento:
+
+Passo 1. Abra um terminal;
+Passo 2. Confira se o seu sistema é de 32 bits ou 64 bits, para isso, use o seguinte comando no terminal:
+
+uname -m
+
+Passo 3. Em seguida, atualize o APT com este comando :
+
+sudo apt-get update
+
+Passo 4. Para começar a baixar a atualização e executá-la, use esse comando;
+
+sudo apt-get dist-upgrade
+
+Passo 5. Instale algumas dependências com o seguinte comando:
+
+sudo apt-get install libgtk2.0-0:i386 libpangox-1.0-0:i386 libpangoxft-1.0-0:i386 libidn11:i386 libglu1-mesa:i386
+
+Instalando o Receitanet no Linux
+
+Para instalar o Receitanet no Linux, faça o seguinte:
+Passo 1. Abra um terminal;
+Passo 2. Confira se o seu sistema é de 32 bits ou 64 bits, para isso, use o seguinte comando no terminal:
+
+uname -m
+
+Passo 3. Se seu sistema é de 32 bits, baixe o instalador do programa Receitanet, usando o comando abaixo. Se o link estiver desatualizado, acesse essa página, baixe a última versão e salve-o com o nome receitanet.bin;
+
+wget http://www.receita.fazenda.gov.br/publico/programas/receitanet/Receitanet-1.10.bin -O receitanet.bin
+
+Passo 4. Se seu sistema é de 64 bits, baixe o instalador do programa Receitanet, usando o comando abaixo. Se o link estiver desatualizado, acesse essa página, baixe a última versão e salve-o com o nome receitanet.bin;
+
+wget http://www.receita.fazenda.gov.br/publico/programas/receitanet/Receitanet-1.10-x64.bin -O receitanet.bin
+
+Passo 5. Depois de baixado, dê permissão de execução ao programa, com o comando abaixo;
+
+chmod +x receitanet.bin
+
+Passo 6. Execute o instalador do Receitanet, usando o comando abaixo;
+
+sudo ./receitanet.bin

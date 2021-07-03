@@ -1,0 +1,25 @@
+Partições de casa
+
+GPT
+
+1 - biosgrub 1.2G
+2 - EFI (REMOVI)
+3 - / - 59G
+4 - swap - 4G
+5 - /home - 136G
+6 - /extra - 30G
+7 - /backup - 770G
+
+Trabalho
+
+GPT
+
+1 - 100MB - BootWin - NTFS
+2 - 9,66GB - Fat16
+3 - 88GB - Win7
+4 - biosgrug - 6M
+5 - /home - 100GB
+6 - /extra - 100G
+7 - swap - 3G
+8 - / - 110GB
+9 - /backup - 580G

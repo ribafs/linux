@@ -1,0 +1,141 @@
+Como instalar o módulo de segurança do Banco do Brasil no Linux Ubuntu, Debian e derivados
+
+Linux Mint 19
+
+sudo apt install libcurl4-openssl-dev libnss3-dev libdbus-1-dev yad libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libfreetype6 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk2.0-0 libnspr4 libnspr4-0d libnss3 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 --reinstall -y
+
+Caso tenha o warsaw desinstale
+wget --https://cloud.gastecnologia.com.br/cef/warsaw/install/GBPCEFwr64.deb
+
+Este pacote específico do Warsaw foi testado no Ubuntu 18.04 LTS e permitirá acessar o internet banking dos seguintes bancos:
+
+    Itaú S.A.
+    Banco do Brasil
+    Caixa Econômica Federal
+
+A esta altura, o módulo já está instalado mas não tem qualquer permissão para rodar!
+Configurando
+
+Você agora vai mudar as permissões de suas bibliotecas.
+Abra seu terminal e acesse o usuário root. Entre no diretório do módulo:
+
+# cd /usr/local/lib/warsaw
+
+Agora você vai substituir as principais bibliotecas dele. Remova as antigas:
+
+# rm ld-linux-x86-64.so.2
+# rm libc.so.6
+# rm libpthread.so.0
+# rm libdl.so.2
+
+Caso dê erro de “não encontrado” em alguma delas, indica que algumas (ou todas) as bibliotecas estão ausentes.
+Normal, esta versão do módulo é “pura” e não costuma traze-las consigo. Por isso ele funciona com os 3 bancos!
+Crie links para as bibliotecas que faltam:
+
+# ln -s /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 
+# ln -s /lib/x86_64-linux-gnu/libc.so.6 
+# ln -s /lib/x86_64-linux-gnu/libpthread.so.0 
+# ln -s /lib/x86_64-linux-gnu/libdl.so.2
+
+Pronto, o Warsaw tem acesso ás bibliotecas!
+Mas ele pode alterar a própria pasta e corromper alguns caminhos. Para evitar qualquer problema, você vai adicionar um atributo extra que impete que, mesmo o root, tenha permissão para alterar ou excluir essas bibliotecas e caminhos!
+
+# chattr +a /usr/local/lib/warsaw
+
+Lembre-se:
+Com este comando você trancou a pasta do módulo e ele não poderá ser desinstalado normalmente.
+Para removê-lo, primeiro tire o atributo:
+
+# chattr -a /usr/local/lib/warsaw
+
+E aí sim poderá rodar o apt purge.
+
+Agora, ative o serviço do Warsaw:
+
+# systemctl enable warsaw
+# systemctl start warsaw
+
+Reinicie o computador.
+
+Caso ainda não tenha acesso e você use Firewall, rode o seguinte enorme comando:
+
+$ sudo iptables -P INPUT DROP ; sudo iptables -P FORWARD DROP ; 
+sudo iptables-save | sudo tee /etc/iptables.conf ; sudo sed -i -e 's|exit 0||' 
+"/etc/rc.local" ; echo iptables-restore \< /etc/iptables.conf | sudo tee -a 
+/etc/rc.local ; echo ' ' | sudo tee -a /etc/rc.local ; echo \echo 1 \> 
+/proc/sys/net/ipv4/tcp_syncookies | sudo tee -a /etc/rc.local ; echo ' ' | 
+sudo tee -a /etc/rc.local ; echo exit 0 | sudo tee -a /etc/rc.local
+
+Para conferir que seu navegador está com os certificados, confira:
+
+    Google Chrome
+    chrome://settings/certificates
+    Mozilla Firefox
+    about:preferences#privacy
+    Desça até o fim da página e clique em “Ver Certificados”
+
+Em ambos os navegadores procure pelo Warsaw, ele fica próximo ao fim das listas!
+Desativando Temporariamente
+
+Caso você queira utilizá-lo no seu sistema tenha em mente que ele rodará com permissões de Super Usuário.
+Isso pode abrir alguma brecha para malwares e outros problemas para seu sistema, uma vez que o módulo Warsaw é popularmente inseguro! Particularmente não tive problemas, mas todo cuidado nunca é demais: Mantenha seu firewall ativo e quando não estiver utilizando-o, execute esta série de comandos:
+
+$ sudo systemctl stop warsaw
+$ sudo systemctl disable warsaw
+
+Isso vai desabilitar o Warsaw.
+Quando for utilizá-lo novamente:
+
+$ sudo systemctl enable warsaw
+$ sudo systemctl start warsaw
+
+#UrbanCompassPony
+
+Fontes:
+UbuntuForumBR
+LinuxDicasESuporte
+LinuxMintForum
+https://unixuniverse.com.br/linux/instalando-o-modulo-warsaw
+
+Linux Mint 18.3
+
+Desinstalar
+sudo warsaw_uninstall
+
+Para instalar o módulo de segurança Banco do Brasil no Ubuntu, Debian, e outros sistemas que suportam arquivos .deb, você deve fazer o seguinte:
+
+Passo 1. Abra um terminal;
+Passo 2. Atualize o repositório de pacotes com o comando;
+
+sudo apt update
+
+Passo 3. Instale os pacotes libnss3-tools e libcurl3;
+
+instalar as dependências.
+
+sudo apt install libnss3-tools && sudo apt install python-openssl && sudo apt install libcurl3 && sudo apt install zenity
+
+Passo 6. Se seu sistema é de 64 bits, use o comando abaixo para baixar o programa;
+
+wget --no-check-certificate https://cloud.gastecnologia.com.br/bb/downloads/ws/warsaw_setup64.deb -O warsaw.deb
+
+Baixar a biblioteca python-gpgme no endereço 
+
+wget http://security.ubuntu.com/ubuntu/pool/main/p/pygpgme/python-gpgme_0.3-1.2build2_amd64.deb
+sudo dpkg -i python-gpgme_0.3-1.2build2_amd64.deb
+
+Passo 7. Agora instale o programa com o comando:
+sudo dpkg -i warsaw.deb
+
+Passo 8. Caso seja necessário, instale as dependências do programa com o comando;
+
+sudo apt-get install -f
+
+E, novamente, ao final do processo, reinicie seu computador.
+
+Verificar a instalação do warsaw com o comando;
+
+ps -ef |grep -v grep |grep -i warsaw
+
+
+

@@ -1,0 +1,4 @@
+php artisan $1:clear
+# Exemplos: paclear cache, paclear route, paclear view, paclear config
+
+

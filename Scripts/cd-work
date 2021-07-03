@@ -1,0 +1,20 @@
+In light of the unreadability and overcomplication of answers, i believe this is what the requestor should do
+
+    add that script to the PATH
+    run the script as . scriptname
+
+The . (dot) will make sure the script is not run in a child shell.
+
+Exemplo
+laravel new $1
+cd $1
+composer require laravel/jetstream
+php artisan jetstream:install livewire
+npm install && npm run dev
+echo
+echo
+echo
+echo "=================================="
+php artisan -V
+echo "Instalado com autenticação usando jetstream e livewire"
+

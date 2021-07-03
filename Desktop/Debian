@@ -1,0 +1,78 @@
+Instalação do Debian 9.4 no Desktop
+
+
+Efetuar o download
+https://cdimage.debian.org/debian-cd/current/amd64/bt-dvd/
+
+Basta baixar o DVD1
+
+Também pode baixar o CD mínimo e instalar via rede, caso tenha uma boa conexãoo com a Internet:
+
+https://www.debian.org/distrib/netinst
+
+Ao baixar faça o download também do arquivo para checar a eficiência do dowload.
+Sugiro o SHA512SUMS que traz o hash dos 14 DVDs, mas cheque apenas o 1.
+
+Grave um DVD ou num pendrive de 8GB.
+
+Espete o pendriive/DVD e efetue o boot. Lembre de alterar a sequência de boot para o pendrive ou DVD. 
+
+Após reiniciar pelo pendrive/DVD ele mostra um menu para quue escolha o tipo de iinstalação
+Recomend Gráfica para quem está iniciando
+
+Escolha o Idioma
+
+Escolha sua localiidade
+
+Escolha o teclado
+
+Rede
+	Nome do computador na rede
+	Nome do domínio - caso seja um desktop use o nome que desejar, exemplo: local
+
+Usuários
+	Senha do root e confirme
+	Nome completo de um usuário comum
+	login
+	senha e confirme
+
+Relógio
+
+Particionamento
+	Esta etapa requer mais atenção caso tenha, caso tenha outro sistema operacional no computador.
+Se tiver também o Windows ou outro linux não mexa nas partições deles.
+
+Caso o HD esteja limpo ou queira formatá-lo escolha a primeira opção Assistido.
+Caso tenha outro siistema e quueira criar novas partições oou redimensionar alguma deixando espaço para a criação de outra(s) enntão escolha a última opção
+
+Manual
+
+Sugiro o seguinte esquema:
+
+/ - raiz com 50GB e partição primária, caso seja a primeira partiçção quue iirá criar. Se não for, use lógica
+
+/home - 100 ou 150GB
+
+swap - 4GB
+
+/backup - restante
+
+Caso tenha a reinstalar ou instalar uma nova versão, formate apenas a partição raiz, a /home deve apenas ser montada, e escolhido o tipo ext4 e não formatada. A /backup também escolha apenas ext4 e monte em /backup sem formatar
+
+Isso facilitará muito sua vida.
+
+Gerenciador de Pacotes
+
+Mirror - Brasil - pop
+
+Proxy - nenhum, exceto se estiver no trabalho e tenha
+
+Popularity - Context - Opcional
+
+Seleção de Software - Escolho Xfce, que é mais leve
+
+Grub - sim
+/dev/sda - geralmente
+
+Obs: Muitas destas etapas o instalador do Ubuntu facilita mais para o usuário, pois o nível de usuário que o Ubuntu quer alcançar é também de usuários com pouca informação. 
+

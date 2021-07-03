@@ -1,0 +1,416 @@
+Reforçando a segurança de servidores Ubuntu 20.04
+
+Proteger seu servidor Linux é importante para proteger seus dados, propriedade intelectual e tempo das mãos de crackers (hackers). O administrador do sistema é responsável pela segurança da máquina Linux. Temos 40 dicas para fortalecimento de servidor Linux para instalação padrão do sistema.
+
+Algumas dicas extras para a segurança
+
+Use uma senha bem forte, com letras maiúsculas, minúsculas, algarismos, símbolos, pelo menos 8 e de preferência mais. A minha tem 15 caracteres. Muito importante que crie uma senha grande e difícil, mas que tenha uma lógica e seja memorizada, pois se esquecer terá problemas. Precisará resetar a senha na administração do servidor.
+
+
+== Implementar autenticação de 2 fatores (2FA)
+
+Ajuda a prevenir ataques de força bruta
+
+1 - Instalar o módulo de autenticação libpan do Google
+
+sudo apt-get install libpam-google-authenticator
+
+2 - Modificar parâmetros do SSH para usar o autenticador do Google
+
+sudo nano /etc/pam.d/sshd
+
+3 - Modifique a configuração do sshd para usar autenticação de resposta de desafio
+
+sudo nano /etc/ssh/sshd_config
+
+Mude a configuração
+
+ChallengeResponseAuthentication yes
+
+4 - Configure o autenticador para o user logar como user e rodar
+
+google-authenticator
+
+- Responda yes para ime-based tokens. Em seguida, digitalize o código de barras em seu aplicativo autenticador OTP.
+- Você deve anotar a chave secreta e os códigos de emergência
+- Responda y para atualizar seu arquivo .google_authenticator
+- Responda as próximas questões como desejar
+
+5 - Reinicie o SSH
+
+sudo service ssh restart
+
+6 - Faça login novamente. Será perguntado pelo código de verificação antes de conectar
+
+docean
+
+Código de verificação:
+Senha:
+Welcome to Ubuntu 20.04 LTS (GNU/Linux 5.4.0-29-generic x86_64)
+
+
+Criptografia
+
+Use sua comunicação com o servidor com criptografia. Para isso sempre use SSH, SCP, SFTP, rsync e pela web sempre use SSL no servidor.
+Use alternativamente OpenVPN, GnuPG
+
+Para criptografar e descriptografar arquivos com senha
+https://www.cyberciti.biz/tips/linux-how-to-encrypt-and-decrypt-files-with-a-password.html
+
+
+Evite usar serviços como FTP, Telnet e Rlogin/Rsh no Linux
+
+Minimize a quantidade de pacotes instalador. Instale somente o estritamente necessário. Assim minimizará as chances de vulnerabilidade.
+
+Para remover
+
+sudo dpkg --list
+sudo dpkg --info packageName
+sudo apt remove --purge packageName
+
+
+Idealmente instale apenas um serviço por servidor. 
+
+Exemplo: num servidor instale o Apache com PHP. Noutro servidor o MariaDB. Noutro o servidor de e-mail. Assim terá mais segurança e disponibilidade.
+
+
+Atualizações
+
+Mantenha todos os pacotes do Ubuntu atualizados, inclusive os pacotes de terceiros como o Apache, PHP, MariaDB, etc.
+O Joomla e todas as suas extensões também devem ser atualizadas com frequência, Acesse com frequência o administrator apra ver os avisos de atualização.
+
+sudo apt update; sudo apt upgrade -y
+
+
+Política de contas de usuário e senha forte do Linux
+
+Use os comandos useradd e usermod para criar e manter contas de usuário. Certifique-se de ter uma política de senha boa e forte. Por exemplo, uma boa senha inclui pelo menos 8 caracteres e mistura letras minúsculas, maiúsculas, números, caracteres especials, etc. O mais importante é escolher uma senha que você possa lembrar. Use ferramentas como "John the ripper" para descobrir senhas fracas de usuários em seu servidor. Configure pam_cracklib.so para impor a política de senha.
+
+
+Configure a expiração de senhas para usuários do Linux para melhor segurança
+
+O comando chage muda o número de dias entre as mudanças de senha e a data da última mudança de senha. Essas informações são usadas pelo sistema para determinar quando um usuário deve alterar sua senha. O arquivo /etc/login.defs define a configuração específica do site para o pacote de senhas shadow, incluindo configuração de expiração de senha. Para desativar a expiração de senha, digite:
+
+chage -M 99999 userName
+
+Para receber informações sobre a expiração de senha:
+
+chage -l userName
+
+Podemos editar o
+
+sudo nano /etc/shadow
+
+Para mudar os campos:
+
+{userName}:{password}:{lastpasswdchanged}:{Minimum_days}:{Maximum_days}:{Warn}:{Inactive}:{Expire}:
+
+Onde,
+     1. Minimum_days: O número mínimo de dias necessários entre as alterações de senha, ou seja, o número de dias restantes antes que o usuário tenha permissão para alterar sua senha.
+     2. Maximum_days: O número máximo de dias em que a senha é válida (depois que o usuário é forçado a alterar sua senha).
+     3. Warn: O número de dias antes que a senha expire para que o usuário seja avisado de que sua senha deve ser alterada.
+     4. Expire: Dias desde 1º de janeiro de 1970 em que a conta foi desativada, ou seja, uma data absoluta que especifica quando o login não pode mais ser usado.
+     
+Eu recomendo o comando chage em vez de editar o arquivo /etc/shadow manualmente:
+
+
+Restringindo o uso de senhas anteriores no Linux
+
+Você pode impedir que todos os usuários usem ou reutilizem as mesmas senhas antigas no Linux. O pam_unix module parameter remember (https://www.cyberciti.biz/tips/how-to-linux-prevent-the-reuse-of-old-passwords.html) pode ser usado para configurar o número de senhas anteriores que não podem ser reutilizadas.
+
+
+Bloqueio de contas de usuário após falhas de login
+
+No Linux, você pode usar o comando faillog para exibir registros faillog ou definir limites de falha de login. faillog formata o conteúdo do log de falha do /var/log/database/log do faillog. Também pode ser usado para manter contadores e limites de falha. Para ver as tentativas de login com falha, digite:
+
+faillog
+
+Para desbloquear uma conta após falhas de login, execute:
+faillog -r -u userName
+
+Observe que você pode usar o comando passwd para bloquear e desbloquear contas:
+
+Bloquear conta Linux
+passwd -l userName
+
+Desbloquear
+passwd -u userName
+
+
+Como verifico se nenhuma conta possui senhas vazias?
+
+sudo awk -F: '($2 == "") {print}' /etc/shadow
+
+Bloquear conta com senha vazia
+
+passwd -l accountName
+
+Certifique-se de que nenhuma conta diferente do root possui UID definido como 0. Apenas a conta root tem UID 0 com permissões totais para acessar o sistema. Digite o seguinte comando para exibir todas as contas com UID definido como 0:
+
+sudo awk -F: '($3 == "0") {print}' /etc/passwd
+
+
+Listar portas de rede abertas
+
+Use o seguinte comando para listar todas as portas abertas e programas associados:
+
+netstat -tulpn
+
+ss -tulpn
+
+nmap -sT -O localhost
+nmap -sT -O server.example.com
+
+https://www.cyberciti.biz/tips/linux-scanning-network-for-open-ports.html
+https://www.cyberciti.biz/networking/nmap-command-examples-tutorials/
+
+
+Listar todos os serviços
+
+systemctl list-units --all --type=service --no-pager
+
+  UNIT                                                  LOAD      ACTIVE   SUB     DESCRIPTION                                                        
+  accounts-daemon.service                               loaded    active   running Accounts Service                                                   
+  acpid.service                                         loaded    active   running ACPI event daemon                                                  
+  alsa-restore.service                                  loaded    active   exited  Save/Restore Sound Card State                                      
+  alsa-state.service                                    loaded    inactive dead    Manage Sound Card State (restore and store)                        
+  anacron.service                                       loaded    inactive dead    Run anacron jobs                                                   
+  apache2.service                                       loaded    active   running The Apache HTTP Server                                             
+  apparmor.service                                      loaded    inactive dead    Load AppArmor profiles          
+
+O comando a seguir exibirá todos os arquivos de unidade systemd disponíveis, independentemente de seu estado e tipo:
+
+systemctl list-unit-files --no-pager
+
+Use o comando grep caso esteja procurando por um arquivo de unidade específico. Por exemplo, o comando abaixo irá procurar por um arquivo de unidade apache2:
+
+systemctl list-unit-files --no-pager | grep apache2
+
+
+Não instale o ambiente gráfico em servidores nem qualquer outro software que não vá necessitar de fato.
+
+Para servidores importantes separe as partições
+/usr
+/home
+/var
+/vavr/tmp
+/tmp
+
+
+Crie partições separadas para os serviços Apache e FTP. Edite o arquivo /etc/fstab e certifique-se de adicionar as seguintes opções de configuração:
+
+     1. noexec - Não define a execução de quaisquer binários nesta partição (impede a execução de binários, mas permite scripts).
+     2. nodev - Não permite caracteres ou dispositivos especiais nesta partição (evita o uso de arquivos de dispositivos como zero, sda etc).
+     3. nosuid - Não defina o acesso SUID / SGID nesta partição (evita o bit setuid).
+
+Exemplo de entrada /etc/fstab para limitar o acesso do usuário em /dev/sda5 (diretório raiz do servidor ftp):
+
+/dev/sda5  /ftpdata          ext3    defaults,nosuid,nodev,noexec 1 2
+
+
+Arquivos graváveis por todo o mundo (777) no servidor Linux
+
+Qualquer pessoa pode modificar um arquivo gravável mundialmente, resultando em um problema de segurança. Use o seguinte comando para localizar todos os arquivos de conjunto de bits permanentes e graváveis:
+
+sudo find /dir -xdev -type d \( -perm -0002 -a ! -perm -1000 \) -print
+
+
+Arquivos sem dono
+
+Os arquivos que não pertencem a nenhum usuário ou grupo podem representar um problema de segurança. Basta localizá-los com o seguinte comando que não pertencem a um usuário válido e a um grupo válido
+
+find /dir -xdev \( -nouser -o -nogroup \) -print
+
+Você precisa investigar cada arquivo relatado e atribuí-lo a um usuário e grupo apropriado ou removê-lo.
+
+
+Use um serviço de autenticação centralizado
+
+Uma única porta de entrada para tudo no site. Sem um sistema de autenticação centralizado, os dados de autenticação do usuário se tornam inconsistentes, o que pode levar a credenciais desatualizadas e contas esquecidas que deveriam ter sido excluídas em primeiro lugar. Um serviço de autenticação centralizado permite que você mantenha o controle central sobre a conta Linux/UNIX e os dados de autenticação. Você pode manter os dados de autenticação sincronizados entre os servidores. Não use o serviço NIS para autenticação centralizada. Use OpenLDAP para clientes e servidores.
+
+
+Monitorar logs
+
+sudo apt install -y logwatch
+
+logwatch | less
+
+Se precisar reconfigurar o postfix
+
+sudo dpkg-reconfigure postfix
+sudo systemctl reload postfix
+
+sudo apt install -y logcheck
+
+sudo nano /etc/logcheck/logcheck.conf
+
+DATE="$(date +'%H:%M %d/%m/%Y')"
+REPORTLEVEL="server"
+SENDMAILTO="logcheck"
+MAILASATTACH=0
+FQDN=1
+ATTACKSUBJECT="Security Alerts"
+SECURITYSUBJECT="Security Events"
+EVENTSSUBJECT="System Events"
+TMP="/tmp"
+
+Níveis
+
+        paranoid
+                minimal set of filters in ignore.d.paranoid
+                for systems like firewalls, with few services
+                lot's of output (verbose), make sure you can handle it
+
+        server
+                more selective set of filters in ignore.d.server
+                also contains the paranoid filters
+                for machines running more services
+
+        workstation
+                elaborate set of filters in ignore.d.workstation
+                also uses ignore.d.paranoid and ignore.d.server filter
+                for non critical machines
+
+logcheck -h
+
+O comando a seguir relatará problemas de segurança ou violações, mas não atualizará as compensações:
+
+logcheck -t
+
+
+Desativar dispositivos USB/firewire/thunderbolt
+
+Digite o seguinte comando para desativar dispositivos USB no sistema Linux:
+
+echo 'install usb-storage / bin / true' >> /etc/modprobe.d/disable-usb-storage.conf
+
+Você pode usar o mesmo método para desativar os módulos firewire e thunderbolt:
+
+echo "blacklist firewire-core" >> /etc/modprobe.d/firewire.conf
+echo "lista negra thunderbolt" >> /etc/modprobe.d/thunderbolt.conf
+
+Uma vez feito isso, os usuários não podem copiar dados confidenciais para dispositivos USB ou instalar malware/vírus ou backdoor em seu sistema baseado em Linux.
+
+
+Desabilite serviços não usados
+
+$ sudo systemctl stop service
+$ sudo systemctl disable service
+
+Para desabilitar nginx
+
+$ sudo systemctl stop nginx
+$ sudo systemctl disable nginx
+
+
+Backups
+
+Nunca é demais enfatizar a importância de fazer um backup do sistema Linux. Um backup com snapchot é bem seguro e prático. Um backup externo adequado permite que você se recupere de um servidor invadido, ou seja, uma intrusão. Os programas tradicionais de backup do UNIX são o dump e o restore também são recomendados. Você deve configurar backups criptografados para armazenamento externo, como servidor NAS ou servidor FreeNAS ou usar serviço de computação em nuvem, como AWS.
+
+Backups são uma medida de segurança muito importante. Caso seu servidor tenha sido invadido ou tenha algum problema irrecuperável, poderá restaurar o backup (snapshot, Akeeba) em pouco tempo. No caso do servidor, apenas destrua recriando um novo usando o seu último snapshot. Caso tenha sofrido apenas problema num site com Joomla poderá restaurar o backup usando o kickstart do Akeeba
+https://github.com/ribafs/joomla/blob/main/Extensoes/ExtraindoJPA.md
+
+Mais recomendações de segurança
+
+https://www.cyberciti.biz/tips/linux-security.html
+
+
+Referências
+
+https://www.maketecheasier.com/logcheck-analyses-log-files-linux/
+
+https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04
+
+https://implex.io/posts/ubuntu-20-04-setup/
+
+https://www.cyberciti.biz/faq/apt-get-apticron-send-email-upgrades-available/
+
+https://www.cyberciti.biz/faq/how-to-keep-debian-linux-patched-with-latest-security-updates-automatically/
+
+https://www.cyberciti.biz/faq/unix-linux-password-cracking-john-the-ripper/
+
+https://www.cyberciti.biz/tips/linux-check-passwords-against-a-dictionary-attack.html
+
+https://linuxconfig.org/ubuntu-20-04-list-services
+
+
+Recomendações
+
+Os cuidados com a segurança colaboram para que os sites e aplicativos instalados no servidor sejam executados de forma esperada, rápida e sem interrumpção.
+
+- Hospede seu site em servidor seguro
+- Efetue backup regularmente, especialmente a cada alteração no site
+	Faça também backup dos scripts de configuração do servidor para o caso de uma reinstalação
+	Lembre de fazer o backup do servidor com os recursos da hospedagem ou crie um snapshot
+- A quantidade de cópias de backup a ser guardada depende da importância do site. Se mais importante mais cópias
+- As cópias devem ser armazenadas em mídia confiável: HD, DVD pendrive
+- Efetue atualização com frequência. Mantenha o aviso de atualização ativo para que receba um aviso por e-mail e atualize imediatamente
+- Após a primeira atualização reinicie o servidor
+- Acessar de forma segura usando SSH (enxuto e configurado para salvar a senha) e nunca via FTP
+- Manter seu desktop seguro, usando um sistema operacional seguro no mesmo, com firewall e outros cuidados
+- Use e abuse da comunidade com seus conhecimentos e generosidade para manter-se atualizado em termos de segurança e proteger seu site
+- Use senhas fortes
+- Use o SSL para proteger pelo menos o administrator
+- Evite instalar pacotes para desenvolvimento como gcc, make, etc e evite também instalar repositórios instáveis.
+- Monitorar frequentemente os logs à procura de algo suspeito em todos os serviços ativos
+- Use softwares tipo IDS que detectam intrusões
+- Instalar um bom firewall de aplicativos como o mod_security
+- Ficar bem atento, estudando, se informando sempre sobre o assunto de que cuida
+- Logo após a configuração final do servidor já crie um backup ou snapshot da droplet e fique atento para criar outro logo que o servidor esteja concluído e bem configurado.
+- Uma boa ideia é ter no desktop a mesma distro e versão do Linux. Para quem usa Windows uma box no Vagrant do Ubuntu 20.04 em seu desktop, sendo cópia fiel e original do servidor localmente, mesma distribuição, mesma versão
+- E use algumas ferramentas que reforçam a segurança como:
+fail2ban
+denyhosts
+lynis
+rhhunter
+etc
+
+- Usar senhas de no mínimo 8 caracteres. Quanto mais melhor
+- Misturar caracteres alfabéticos maiúsculas, minúsculas, números e caracteres especiais como:
+-, _, *, $, !, %
+- Não use senhas fáceis como data de nascimento, número de identidade, nomes de filhos e cônjuges.
+- Procure não usar palavras do mundo real
+- Pense num eposódio que apenas você conhece ou lembra e forme uma frase com suas iniciais
+- Crie senhas posicionais, por exemplo: primeira letra da última fila, primeira letra da primeira fila, última letra da última fila, última letra da primeira fila e assim por diante.
+- Mesmo que ilógicas as senhas devem ser, para você, de fácil memorização, pois você deve evitar anotar as senhas
+- Evite usar a mesma senha para todos os esus acessos
+
+Evitar o uso do ftp para transferir/baixar arquivos para/do servidor, pois ele envia seus dados (login e senha) em texto claro.
+
+Se precisar usar o ftp use o FileZilla, que usa o sftp.
+
+https://filezilla-project.org/
+
+Instalação no Ubuntu
+
+sudo apt-get install filezilla
+
+
+Realize backups regulares
+
+Podemos criar snapshots no DigitalOcean e também realizar backups dos sites em Joomla com o Akeeba.
+Também temos o https://github.com/ribafs/generic-backup que gera o backup de qualquer site ou aplicativo, dos arquivos e do banco em MySQL.
+Após realizar o backup remova do servidor, pois ele não tem autenticação.
+
+Segurança em servidor tipo VPS
+
+https://www.youtube.com/watch?v=WXL37SjSs9g&feature=youtu.be&fbclid=IwAR10lnvZ6CHIN63fAvFi2c7R2pS52XyIRd2-8iXorkmibniDqJjByd0A0qI
+
+- Acesso SSH com chave criptografada. Criar chave SSH no desktop usando senha
+- fail2bn
+- Desabilitar o acesso com root ao SSH
+- Update e upgrade do sistema. Sempre a última versão LTS da distribuição
+- Habilitando o firewall
+- Bloquear acesso com root
+
+Windows
+https://filezilla-project.org/download.php?platform=win64
+
+Referências
+
+https://geek.linuxman.pro.br/geek/ubuntu-pronto-para-guerra
+https://www.thefanclub.co.za/how-to/how-secure-ubuntu-1604-lts-server-part-1-basics 
+https://linux-audit.com/ubuntu-server-hardening-guide-quick-and-secure/
+https://hostpresto.com/community/tutorials/how-to-install-and-use-lynis-on-ubuntu-14-04/
+
+

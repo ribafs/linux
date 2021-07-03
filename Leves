@@ -1,0 +1,18 @@
+Processador de textos leve
+
+sudo apt install calligra
+
+
+
+Navegadores
+
+sudo apt update && sudo apt install midori
+
+Vivaldi
+
+Falkon
+sudo apt update && sudo apt install falkon
+
+https://www.torproject.org/
+
+

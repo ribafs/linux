@@ -1,0 +1,7 @@
+Para quebrar a senha do usuário do Windows com o Hiren's Boot:
+
+Dê o boot e escolha Mini Windows XP Ao iniciar o CD abra o programa "HBCD Menu" localizado na área de trabalho:
+
+Programs > Passwords / Keys > Windows Login > NTPWEdit (Reset Xp/Vista/7 User Passowrd)
+
+http://www.hirensbootcd.org

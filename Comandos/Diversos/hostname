@@ -1,0 +1,15 @@
+Ajustar o hostname
+
+nano /etc/hosts
+127.0.0.1       localhost.localdomain   localhost
+67.205.138.188  ribafs.org	www.ribafs.org  ribafs
+
+
+/etc/hostname
+nano /etc/hostname
+
+ribafs
+
+reboot
+
+
