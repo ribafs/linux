@@ -1,0 +1,26 @@
+Mudar para que o Windows seja o sistema default
+
+Por padrão, o Mint deixa a si como o sistema default, de forma que se não escolhermos ele será aberto
+
+Para alterar para que o Windows seja o default:
+
+Verifique o número do windows no menu do boot (começa com zero)
+Edite o grub
+
+sudo nano /etc/default/grub
+
+Exemplo: 2
+
+Mude a linha
+GRUB_DEFAULT=0
+
+Para
+GRUB_DEFAULT=2
+
+Execute
+
+sudo update-grub
+
+Reinicie e veja se está ok. Ajuste se necessário e repita o comando acima.
+
+
